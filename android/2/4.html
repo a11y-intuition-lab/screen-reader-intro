@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Part 2, step 4 of 5: Form fields – TalkBack on Android</title>
+<meta name="theme-color" content="#1c516b">
+<link rel="manifest" href="../../manifest.webmanifest">
+<link rel="icon" href="../../icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="SR Intro">
+<link rel="stylesheet" href="../../style.css">
+<link rel="alternate" hreflang="nb" href="../../nb/android/2/4.html">
+<script src="../../script.js" defer></script>
+</head>
+<body>
+<header>
+  <a href="../../">Screen Reader Intro</a>
+  <a href="../../nb/android/2/4.html" hreflang="nb" lang="nb">Norsk</a>
+</header>
+<main>
+<h1><span class="eyebrow">Part 2, step 4 of 5</span> Form fields</h1>
+<p>In a form, TalkBack reads the name of the field, what kind of field it is, and any hint that belongs to it.</p>
+<p>You can jump between form fields with the reading controls. Swipe up then down in one movement to change the reading control. On phones with multi-finger gestures you can also swipe up or down with three fingers. TalkBack says the name of each control. Keep going until you hear “Controls”. Then swipe down to go to the next one, and up to go to the previous one.</p>
+<p>Double-tap a text field to bring up the keyboard. Typing with a screen reader takes time, so type just a few letters. Find a letter with your finger and lift your finger to type it.</p>
+<p>While the keyboard is open, you can move to the next field with the reading controls: choose Controls and swipe down.</p>
+<p>Try it: first press “Sign up” without filling anything in. Listen to what happens. Then fill in the form and sign up.</p>
+<section class="practice" aria-labelledby="practice-title">
+<h2 id="practice-title">Practice area: Fjordby Library</h2>
+<h3>Sign up for the book talk</h3>
+<form data-practice data-status="status" data-message="Thank you, you are signed up for the book talk." novalidate>
+  <label for="name">Name</label>
+  <input type="text" id="name" required aria-describedby="name-error">
+  <p class="error" id="name-error" data-message="Enter your name."></p>
+  <label for="email">Email</label>
+  <p class="hint" id="email-hint">We only use it to send you a reminder.</p>
+  <input type="email" id="email" required aria-describedby="email-hint email-error">
+  <p class="error" id="email-error" data-message="Enter your email address."></p>
+  <label class="check"><input type="checkbox" id="remind"> Send me a reminder the day before</label>
+  <p><button type="submit">Sign up</button></p>
+</form>
+<p role="status" id="status"></p>
+</section>
+<p>When something is wrong, the page moves you to the field, and TalkBack reads the field name together with the error message. If the error were only shown in red, you would not have heard it.</p>
+<p>Swiping left and right still moves one thing at a time, whatever the reading controls is set to. Swipe right until you hear “Next”, and double-tap.</p>
+</main>
+<nav class="tabbar" aria-label="Steps">
+  <a href="3.html">Back</a>
+  <a href="../">Menu <span class="pos">4 of 5</span></a>
+  <a href="5.html" class="primary">Next</a>
+</nav>
+<footer>
+  <p>Part of <a href="https://a11yintuition.org/">A11y Intuition Lab</a>. Source: <a href="https://support.google.com/accessibility/android/answer/6151827">Google, TalkBack gestures</a>.</p>
+</footer>
+</body>
+</html>
