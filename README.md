@@ -9,4 +9,4 @@ tool while using it. Test pages with good and bad examples follow later.
 
 Available in Norwegian and English. Plain HTML and CSS, no build step.
 
-Served with GitHub Pages: <https://a11y-intuition-lab.github.io/screen-reader-intro/>
+Served with GitHub Pages: <https://a11yintuition.org/screen-reader-intro/>
