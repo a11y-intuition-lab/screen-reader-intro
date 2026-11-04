@@ -1,0 +1,7 @@
+# Sikkerhet: ikke installer pakker som er publisert for mindre enn 7 dager siden.
+# Kompromitterte versjoner blir ofte oppdaget og fjernet i løpet av den første uka.
+minimumReleaseAge: 10080
+
+# Ingen install-skript fra avhengigheter.
+enablePrePostScripts: false
+strictPeerDependencies: true
