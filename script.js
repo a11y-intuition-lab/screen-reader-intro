@@ -7,3 +7,8 @@ document.addEventListener('click', (event) => {
   status.textContent = '';
   setTimeout(() => { status.textContent = button.dataset.message; }, 100);
 });
+
+// Service worker: siden virker uten nett når den er åpnet én gang.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register(new URL('sw.js', document.currentScript.src));
+}
