@@ -1,5 +1,7 @@
 // Innholdet i innføringen på engelsk. Hvert trinn er én skjerm.
-import { InPage, Practice, PracticeForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import library from '../assets/library.svg';
+import wave from '../assets/wave.svg';
 import type { Content } from './types';
 
 const content: Content = {
@@ -198,7 +200,129 @@ const content: Content = {
         <>
           <p>You can now jump between headings, landmarks, links and form fields, and you have heard the difference between a status message and a silent change.</p>
           <p>Think about a page you have made yourself. What would you hear if you jumped between its headings? Are there links called “Read more”? Are error messages read aloud?</p>
-          <p>Coming soon: test pages with good and bad examples.</p>
+          <p>Remember to turn off VoiceOver when you are done.</p>
+        </>
+      ),
+    },
+    {
+      id: "more-than-text",
+      title: "More than text",
+      intro: "Five steps about content that is more than text: images, lists, tables, content you can show and hide, and dialogs.",
+      steps: [
+          {
+            title: "Images and icons",
+            body: (
+              <>
+                <p>An image needs a text that says what it shows. This is called alternative text. Without it, a screen reader user does not know what the image is, or whether it matters. Images that are only decoration should not be read at all.</p>
+                <p>The same goes for buttons that are only an icon. The button needs a name, even if the name is not shown.</p>
+                <p>Try: swipe right through the practice area. Listen to what VoiceOver says about the image and about the two buttons.</p>
+                <Practice title="Fjordby library">
+                <img src={library} alt="Fjordby library: a low house with four windows and a blue door." width="320" height="180" />
+                <img src={wave} alt="" width="320" height="24" />
+                <p>Share the page with a friend:</p>
+                <p><IconButton label="Share" /><IconButton /></p>
+                </Practice>
+                <p>The image of the library was read with its description. The wavy line below is decoration, so VoiceOver skipped it. The two buttons look the same, but only the first one says “Share”. The second has no name, so you do not know what it does until you press it.</p>
+                <p>If an image has no description, VoiceOver can try to describe it. This is called VoiceOver Recognition, and you find it in Settings, then Accessibility, then VoiceOver, then VoiceOver Recognition. The description can be wrong, and it does not know why the image is there.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Lists",
+            body: (
+              <>
+                <p>When you reach a list, VoiceOver says that it is a list and how many items it has. Then you know how much is coming, and whether you want to hear it all.</p>
+                <p>To get past a long list, jump to the next heading with the rotor.</p>
+                <p>Try: swipe right into the first list and listen to what VoiceOver says at the start. Then skip past the long list of branches to the heading Contact.</p>
+                <Practice title="Fjordby library">
+                <h3>What you need to borrow</h3>
+                <ul>
+                <li>A library card</li>
+                <li>A PIN you choose yourself</li>
+                <li>The books you want to borrow</li>
+                </ul>
+                <h3>All branches</h3>
+                <ul>
+                <li>Fjordby centre</li>
+                <li>North harbour</li>
+                <li>Lia</li>
+                <li>Strand</li>
+                <li>Bakkeby</li>
+                <li>Upper Fjordby</li>
+                <li>Seaside</li>
+                <li>The woods</li>
+                </ul>
+                <h3>Contact</h3>
+                <p>Call us or come by the desk.</p>
+                </Practice>
+                <p>If the list had only been lines starting with a dash, VoiceOver would not have said it was a list. Then you do not know how long it is until you have heard it all.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Tables",
+            body: (
+              <>
+                <p>In a table, VoiceOver reads one cell at a time. In a well-built table, VoiceOver also knows which column the cell belongs to, so you hear that “35 kr” is an amount and not something else.</p>
+                <p>Swipe right to move from cell to cell, row by row. Listen for whether VoiceOver says the name of the column together with the content of the cell.</p>
+                <p>Try: find out how much you had to pay for returning a book late.</p>
+                <Practice title="Fjordby library">
+                <table>
+                <caption>Your account in October</caption>
+                <thead><tr><th scope="col">Date</th><th scope="col">What</th><th scope="col" className="amount">Amount</th></tr></thead>
+                <tbody>
+                <tr><td>2 Oct</td><td>Reservation</td><td className="amount">10 kr</td></tr>
+                <tr><td>9 Oct</td><td>Copies, 12 pages</td><td className="amount">24 kr</td></tr>
+                <tr><td>16 Oct</td><td>Returned late</td><td className="amount">35 kr</td></tr>
+                <tr><td>23 Oct</td><td>Lost library card</td><td className="amount">50 kr</td></tr>
+                </tbody>
+                </table>
+                </Practice>
+                <p>The answer is 35 kr, in the row Returned late. If the table had been made with plain text and spaces, you would have heard the numbers without knowing what they mean.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Show more and accordions",
+            body: (
+              <>
+                <p>Many pages hide text behind a button, for example questions and answers. A good button says whether the content is hidden or shown. VoiceOver says it after the name of the button.</p>
+                <p>Try: find out whether you can return books when the library is closed. Double-tap the question, and swipe right to hear the answer. Listen to what VoiceOver says about the button before and after you tap it.</p>
+                <Practice title="Fjordby library">
+                <Disclosure title="Can I return books when you are closed?"><p>Yes. There is a return slot by the entrance. It is open day and night.</p></Disclosure>
+                <Disclosure title="What does it cost to return late?"><p>35 kroner per book.</p></Disclosure>
+                <Disclosure title="Can I borrow e-books?"><p>Yes, in the app.</p></Disclosure>
+                </Practice>
+                <p>The answer came right after the button. If it had appeared somewhere else on the page, you would not have found it. And if the button had not said that the content was hidden, you would not have known there was something to open.</p>
+                <p>The questions are also headings, so you can jump between them with headings.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Dialogs",
+            body: (
+              <>
+                <p>A dialog sits on top of the page and waits for an answer, for example “Are you sure?”. When it opens, VoiceOver should move you into it. While it is open, you should not be able to swipe out to the page behind it.</p>
+                <p>Try: double-tap “Delete your list”. Swipe right through the dialog, and on past the last button. Do you get out of the dialog? Then choose Cancel.</p>
+                <Practice title="Fjordby library">
+                <h3>Your list</h3>
+                <PracticeDialog open="Delete your list" title="Do you want to delete your list?"><p>You lose the four books you have saved.</p></PracticeDialog>
+                </Practice>
+                <p>When the dialog closed, you came back to the button you pressed, and you heard what happened. Without that, you often end up at the top of the page and have to find your way back.</p>
+                <p>Many dialogs can also be closed with a two-finger scrub: move two fingers back and forth quickly three times, like a “z”. It does not work on every website. Then use the button to close it.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>You have heard how images, lists, tables, content that can be hidden, and dialogs are read, and what you miss when they are built badly.</p>
+          <p>Think of a page you have made yourself. Do the icon buttons have names? Are the tables real tables? Can you hear whether something is hidden or shown?</p>
           <p>Remember to turn off VoiceOver when you are done.</p>
         </>
       ),
@@ -401,7 +525,129 @@ const content: Content = {
         <>
           <p>You can now jump between headings, landmarks, links and form fields, and you have heard the difference between a status message and a silent change.</p>
           <p>Think about a page you have made yourself. What would you hear if you jumped between its headings? Are there links called “Read more”? Are error messages read aloud?</p>
-          <p>Coming soon: test pages with good and bad examples.</p>
+          <p>Remember to turn off TalkBack when you are done.</p>
+        </>
+      ),
+    },
+    {
+      id: "more-than-text",
+      title: "More than text",
+      intro: "Five steps about content that is more than text: images, lists, tables, content you can show and hide, and dialogs.",
+      steps: [
+          {
+            title: "Images and icons",
+            body: (
+              <>
+                <p>An image needs a text that says what it shows. This is called alternative text. Without it, a screen reader user does not know what the image is, or whether it matters. Images that are only decoration should not be read at all.</p>
+                <p>The same goes for buttons that are only an icon. The button needs a name, even if the name is not shown.</p>
+                <p>Try: swipe right through the practice area. Listen to what TalkBack says about the image and about the two buttons.</p>
+                <Practice title="Fjordby library">
+                <img src={library} alt="Fjordby library: a low house with four windows and a blue door." width="320" height="180" />
+                <img src={wave} alt="" width="320" height="24" />
+                <p>Share the page with a friend:</p>
+                <p><IconButton label="Share" /><IconButton /></p>
+                </Practice>
+                <p>The image of the library was read with its description. The wavy line below is decoration, so TalkBack skipped it. The two buttons look the same, but only the first one says “Share”. The second has no name, so you do not know what it does until you press it.</p>
+                <p>If an image has no description, TalkBack can try to describe it with AI: put focus on the image, tap with three fingers to open the TalkBack menu, and choose Describe image. It is not available on every phone. The description can be wrong, and it does not know why the image is there.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Lists",
+            body: (
+              <>
+                <p>When you reach a list, TalkBack says that it is a list and how many items it has. Then you know how much is coming, and whether you want to hear it all.</p>
+                <p>To get past a long list, jump to the next heading. You can also add Lists to the reading controls: tap with three fingers to open the TalkBack menu, choose TalkBack settings, then Customize menus, then Customize reading controls, and turn on Lists.</p>
+                <p>Try: swipe right into the first list and listen to what TalkBack says at the start. Then skip past the long list of branches to the heading Contact.</p>
+                <Practice title="Fjordby library">
+                <h3>What you need to borrow</h3>
+                <ul>
+                <li>A library card</li>
+                <li>A PIN you choose yourself</li>
+                <li>The books you want to borrow</li>
+                </ul>
+                <h3>All branches</h3>
+                <ul>
+                <li>Fjordby centre</li>
+                <li>North harbour</li>
+                <li>Lia</li>
+                <li>Strand</li>
+                <li>Bakkeby</li>
+                <li>Upper Fjordby</li>
+                <li>Seaside</li>
+                <li>The woods</li>
+                </ul>
+                <h3>Contact</h3>
+                <p>Call us or come by the desk.</p>
+                </Practice>
+                <p>If the list had only been lines starting with a dash, TalkBack would not have said it was a list. Then you do not know how long it is until you have heard it all.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Tables",
+            body: (
+              <>
+                <p>In a table, TalkBack reads one cell at a time. In a well-built table, TalkBack also knows which column the cell belongs to, so you hear that “35 kr” is an amount and not something else.</p>
+                <p>Swiping right moves from cell to cell as usual. When you are inside a table, the reading controls also get Rows and Columns. Swipe up then down in one movement until you hear “Rows”, and swipe down to go to the next row. Listen for whether TalkBack says the name of the column together with the content of the cell.</p>
+                <p>Try: find out how much you had to pay for returning a book late.</p>
+                <Practice title="Fjordby library">
+                <table>
+                <caption>Your account in October</caption>
+                <thead><tr><th scope="col">Date</th><th scope="col">What</th><th scope="col" className="amount">Amount</th></tr></thead>
+                <tbody>
+                <tr><td>2 Oct</td><td>Reservation</td><td className="amount">10 kr</td></tr>
+                <tr><td>9 Oct</td><td>Copies, 12 pages</td><td className="amount">24 kr</td></tr>
+                <tr><td>16 Oct</td><td>Returned late</td><td className="amount">35 kr</td></tr>
+                <tr><td>23 Oct</td><td>Lost library card</td><td className="amount">50 kr</td></tr>
+                </tbody>
+                </table>
+                </Practice>
+                <p>The answer is 35 kr, in the row Returned late. If the table had been made with plain text and spaces, you would have heard the numbers without knowing what they mean.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Show more and accordions",
+            body: (
+              <>
+                <p>Many pages hide text behind a button, for example questions and answers. A good button says whether the content is hidden or shown. TalkBack says it after the name of the button.</p>
+                <p>Try: find out whether you can return books when the library is closed. Double-tap the question, and swipe right to hear the answer. Listen to what TalkBack says about the button before and after you tap it.</p>
+                <Practice title="Fjordby library">
+                <Disclosure title="Can I return books when you are closed?"><p>Yes. There is a return slot by the entrance. It is open day and night.</p></Disclosure>
+                <Disclosure title="What does it cost to return late?"><p>35 kroner per book.</p></Disclosure>
+                <Disclosure title="Can I borrow e-books?"><p>Yes, in the app.</p></Disclosure>
+                </Practice>
+                <p>The answer came right after the button. If it had appeared somewhere else on the page, you would not have found it. And if the button had not said that the content was hidden, you would not have known there was something to open.</p>
+                <p>The questions are also headings, so you can jump between them with headings.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Dialogs",
+            body: (
+              <>
+                <p>A dialog sits on top of the page and waits for an answer, for example “Are you sure?”. When it opens, TalkBack should move you into it. While it is open, you should not be able to swipe out to the page behind it.</p>
+                <p>Try: double-tap “Delete your list”. Swipe right through the dialog, and on past the last button. Do you get out of the dialog? Then choose Cancel.</p>
+                <Practice title="Fjordby library">
+                <h3>Your list</h3>
+                <PracticeDialog open="Delete your list" title="Do you want to delete your list?"><p>You lose the four books you have saved.</p></PracticeDialog>
+                </Practice>
+                <p>When the dialog closed, you came back to the button you pressed, and you heard what happened. Without that, you often end up at the top of the page and have to find your way back.</p>
+                <p>Many dialogs can also be closed with Back: swipe down then left in one movement. It does not work on every website. Then use the button to close it.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>You have heard how images, lists, tables, content that can be hidden, and dialogs are read, and what you miss when they are built badly.</p>
+          <p>Think of a page you have made yourself. Do the icon buttons have names? Are the tables real tables? Can you hear whether something is hidden or shown?</p>
           <p>Remember to turn off TalkBack when you are done.</p>
         </>
       ),

@@ -161,3 +161,85 @@ export function PracticeForm() {
     </>
   );
 }
+
+/** Ikon som bare er pynt. Skjermleseren hopper over det. */
+function ShareIcon() {
+  return (
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24">
+      <path
+        d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+/** Ikonknapp. Med label får den et navn; uten blir den bare «knapp». */
+export function IconButton({ label }: { label?: string }) {
+  return (
+    <button type="button" className="icon" aria-label={label}>
+      <ShareIcon />
+    </button>
+  );
+}
+
+/** Vis mer: knappen sier om innholdet er skjult eller utvidet. */
+export function Disclosure({ title, children }: { title: string; children: ReactNode }) {
+  const id = useId();
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="disclosure">
+      <h3>
+        <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
+          {title}
+          <span className="sign" aria-hidden="true">{open ? '−' : '+'}</span>
+        </button>
+      </h3>
+      <div id={id} hidden={!open}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+const DIALOG = {
+  en: { cancel: 'Cancel', confirm: 'Delete', cancelled: 'Nothing was deleted.', confirmed: 'The list is deleted.' },
+  nb: { cancel: 'Avbryt', confirm: 'Slett', cancelled: 'Ingenting ble slettet.', confirmed: 'Lista er slettet.' },
+};
+
+/** Modal dialog. Fokus går inn i dialogen, og tilbake til knappen når den lukkes. */
+export function PracticeDialog({ open: openLabel, title, children }: { open: string; title: string; children: ReactNode }) {
+  const t = DIALOG[useLang()];
+  const id = useId();
+  const dialog = useRef<HTMLDialogElement>(null);
+  const opener = useRef<HTMLButtonElement>(null);
+  const [status, setStatus] = useState('');
+  const close = (message: string) => {
+    dialog.current?.close();
+    opener.current?.focus();
+    setStatus('');
+    setTimeout(() => setStatus(message), 100);
+  };
+  return (
+    <>
+      <p>
+        <button type="button" ref={opener} onClick={() => dialog.current?.showModal()}>
+          {openLabel}
+        </button>
+      </p>
+      <dialog ref={dialog} aria-labelledby={id} onCancel={(e) => { e.preventDefault(); close(t.cancelled); }}>
+        <h3 id={id}>{title}</h3>
+        {children}
+        <p className="actions">
+          <button type="button" className="secondary" onClick={() => close(t.cancelled)}>
+            {t.cancel}
+          </button>
+          <button type="button" onClick={() => close(t.confirmed)}>
+            {t.confirm}
+          </button>
+        </p>
+      </dialog>
+      <p role="status">{status}</p>
+    </>
+  );
+}

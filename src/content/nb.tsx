@@ -1,5 +1,7 @@
 // Innholdet i innføringen på norsk. Hvert trinn er én skjerm.
-import { InPage, Practice, PracticeForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import library from '../assets/library.svg';
+import wave from '../assets/wave.svg';
 import type { Content } from './types';
 
 const content: Content = {
@@ -198,7 +200,129 @@ const content: Content = {
         <>
           <p>Du kan nå hoppe mellom overskrifter, landemerker, lenker og skjemafelt, og du har hørt forskjellen på en statusmelding og en stille endring.</p>
           <p>Tenk på en side du har laget selv. Hva ville du hørt hvis du hoppet mellom overskriftene? Finnes det lenker som heter «Les mer»? Leses feilmeldingene opp?</p>
-          <p>Snart kommer testsider med gode og dårlige eksempler.</p>
+          <p>Husk å slå av VoiceOver når du er ferdig.</p>
+        </>
+      ),
+    },
+    {
+      id: "more-than-text",
+      title: "Mer enn tekst",
+      intro: "Fem trinn om innhold som er mer enn tekst: bilder, lister, tabeller, innhold som kan vises og skjules, og dialoger.",
+      steps: [
+          {
+            title: "Bilder og ikoner",
+            body: (
+              <>
+                <p>Et bilde trenger en tekst som sier hva det viser. Den kalles alternativ tekst. Uten den vet ikke en skjermleserbruker hva bildet er, eller om det er viktig. Bilder som bare er pynt, skal ikke leses opp i det hele tatt.</p>
+                <p>Det samme gjelder knapper som bare er et ikon. Knappen trenger et navn, selv om navnet ikke vises.</p>
+                <p>Prøv: sveip til høyre gjennom øvingsområdet. Lytt til hva VoiceOver sier om bildet og om de to knappene.</p>
+                <Practice title="Fjordby bibliotek">
+                <img src={library} alt="Fjordby bibliotek: et lavt hus med fire vinduer og en blå dør." width="320" height="180" />
+                <img src={wave} alt="" width="320" height="24" />
+                <p>Del siden med en venn:</p>
+                <p><IconButton label="Del" /><IconButton /></p>
+                </Practice>
+                <p>Bildet av biblioteket ble lest opp med beskrivelsen. Bølgestreken under er pynt, så VoiceOver hoppet over den. De to knappene ser like ut, men bare den første sier «Del». Den andre har ikke noe navn, så du vet ikke hva den gjør før du trykker på den.</p>
+                <p>Mangler et bilde beskrivelse, kan VoiceOver prøve å beskrive det selv. Det heter VoiceOver-gjenkjenning, og du finner det under Innstillinger, så Tilgjengelighet, så VoiceOver, så VoiceOver-gjenkjenning. Beskrivelsen kan være feil, og den vet ikke hvorfor bildet er der.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Lister",
+            body: (
+              <>
+                <p>Når du kommer til en liste, sier VoiceOver at det er en liste og hvor mange punkter den har. Da vet du hvor mye som kommer, og om du vil høre alt.</p>
+                <p>Vil du forbi en lang liste, hopper du til neste overskrift med rotoren.</p>
+                <p>Prøv: sveip til høyre inn i den første lista og lytt til hva VoiceOver sier i starten. Hopp så forbi den lange lista med filialer til overskriften Kontakt.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Dette trenger du for å låne</h3>
+                <ul>
+                <li>Lånekort</li>
+                <li>En PIN-kode du velger selv</li>
+                <li>Bøkene du vil låne</li>
+                </ul>
+                <h3>Alle filialer</h3>
+                <ul>
+                <li>Fjordby sentrum</li>
+                <li>Nordhavna</li>
+                <li>Lia</li>
+                <li>Strand</li>
+                <li>Bakkeby</li>
+                <li>Øvre Fjordby</li>
+                <li>Sjøsiden</li>
+                <li>Skogen</li>
+                </ul>
+                <h3>Kontakt</h3>
+                <p>Ring oss eller kom innom skranken.</p>
+                </Practice>
+                <p>Hadde lista bare vært linjer med bindestrek foran, hadde ikke VoiceOver sagt at det var en liste. Da vet du ikke hvor lang den er før du har hørt alt.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Tabeller",
+            body: (
+              <>
+                <p>I en tabell leser VoiceOver én celle om gangen. I en godt laget tabell vet VoiceOver også hvilken kolonne cellen hører til, så du hører at «35 kr» er et beløp og ikke noe annet.</p>
+                <p>Sveip til høyre for å gå fra celle til celle, rad for rad. Lytt etter om VoiceOver sier navnet på kolonnen sammen med innholdet i cellen.</p>
+                <p>Prøv: finn ut hvor mye du måtte betale for å levere en bok for sent.</p>
+                <Practice title="Fjordby bibliotek">
+                <table>
+                <caption>Kontoen din i oktober</caption>
+                <thead><tr><th scope="col">Dato</th><th scope="col">Hva</th><th scope="col" className="amount">Beløp</th></tr></thead>
+                <tbody>
+                <tr><td>2. okt.</td><td>Reservering</td><td className="amount">10 kr</td></tr>
+                <tr><td>9. okt.</td><td>Kopier, 12 sider</td><td className="amount">24 kr</td></tr>
+                <tr><td>16. okt.</td><td>Levert for sent</td><td className="amount">35 kr</td></tr>
+                <tr><td>23. okt.</td><td>Tapt lånekort</td><td className="amount">50 kr</td></tr>
+                </tbody>
+                </table>
+                </Practice>
+                <p>Svaret er 35 kr, på raden Levert for sent. Hadde tabellen vært laget med vanlig tekst og mellomrom, hadde du hørt tallene uten å vite hva de betyr.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Vis mer og trekkspill",
+            body: (
+              <>
+                <p>Mange sider skjuler tekst bak en knapp, for eksempel spørsmål og svar. En god knapp sier om innholdet er skjult eller vist. VoiceOver sier det etter navnet på knappen.</p>
+                <p>Prøv: finn ut om du kan levere bøker når biblioteket er stengt. Trykk to ganger på spørsmålet, og sveip til høyre for å høre svaret. Lytt til hva VoiceOver sier om knappen før og etter at du trykker.</p>
+                <Practice title="Fjordby bibliotek">
+                <Disclosure title="Kan jeg levere når dere er stengt?"><p>Ja. Ved inngangen er det en luke for innlevering. Den er åpen hele døgnet.</p></Disclosure>
+                <Disclosure title="Hva koster det å levere for sent?"><p>35 kroner per bok.</p></Disclosure>
+                <Disclosure title="Kan jeg låne e-bøker?"><p>Ja, i appen.</p></Disclosure>
+                </Practice>
+                <p>Svaret kom rett etter knappen. Hadde det dukket opp et annet sted på siden, hadde du ikke funnet det. Og hadde ikke knappen sagt at innholdet var skjult, hadde du ikke visst at det var noe å åpne.</p>
+                <p>Spørsmålene er også overskrifter, så du kan hoppe mellom dem med overskrifter.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Dialoger",
+            body: (
+              <>
+                <p>En dialog legger seg over siden og venter på et svar, for eksempel «Er du sikker?». Når den åpnes, skal VoiceOver flytte deg inn i den. Mens den er åpen, skal du ikke kunne sveipe deg ut til siden bak.</p>
+                <p>Prøv: trykk to ganger på «Slett lista di». Sveip til høyre gjennom dialogen, og videre forbi den siste knappen. Kommer du ut av dialogen? Velg så Avbryt.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Lista di</h3>
+                <PracticeDialog open="Slett lista di" title="Vil du slette lista di?"><p>Du mister de fire bøkene du har lagret.</p></PracticeDialog>
+                </Practice>
+                <p>Da dialogen lukket seg, kom du tilbake til knappen du trykket på, og du hørte hva som skjedde. Uten det havner du ofte øverst på siden og må lete deg tilbake.</p>
+                <p>Mange dialoger kan også lukkes med en sikksakkbevegelse med to fingre: beveg to fingre raskt fram og tilbake tre ganger, som en «z». Det virker ikke på alle nettsider. Da bruker du knappen for å lukke.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>Du har hørt hvordan bilder, lister, tabeller, innhold som kan skjules, og dialoger leses opp, og hva du går glipp av når de er laget dårlig.</p>
+          <p>Tenk på en side du har laget selv. Har ikonknappene navn? Er tabellene ekte tabeller? Hører du om noe er skjult eller vist?</p>
           <p>Husk å slå av VoiceOver når du er ferdig.</p>
         </>
       ),
@@ -401,7 +525,129 @@ const content: Content = {
         <>
           <p>Du kan nå hoppe mellom overskrifter, landemerker, lenker og skjemafelt, og du har hørt forskjellen på en statusmelding og en stille endring.</p>
           <p>Tenk på en side du har laget selv. Hva ville du hørt hvis du hoppet mellom overskriftene? Finnes det lenker som heter «Les mer»? Leses feilmeldingene opp?</p>
-          <p>Snart kommer testsider med gode og dårlige eksempler.</p>
+          <p>Husk å slå av TalkBack når du er ferdig.</p>
+        </>
+      ),
+    },
+    {
+      id: "more-than-text",
+      title: "Mer enn tekst",
+      intro: "Fem trinn om innhold som er mer enn tekst: bilder, lister, tabeller, innhold som kan vises og skjules, og dialoger.",
+      steps: [
+          {
+            title: "Bilder og ikoner",
+            body: (
+              <>
+                <p>Et bilde trenger en tekst som sier hva det viser. Den kalles alternativ tekst. Uten den vet ikke en skjermleserbruker hva bildet er, eller om det er viktig. Bilder som bare er pynt, skal ikke leses opp i det hele tatt.</p>
+                <p>Det samme gjelder knapper som bare er et ikon. Knappen trenger et navn, selv om navnet ikke vises.</p>
+                <p>Prøv: sveip til høyre gjennom øvingsområdet. Lytt til hva TalkBack sier om bildet og om de to knappene.</p>
+                <Practice title="Fjordby bibliotek">
+                <img src={library} alt="Fjordby bibliotek: et lavt hus med fire vinduer og en blå dør." width="320" height="180" />
+                <img src={wave} alt="" width="320" height="24" />
+                <p>Del siden med en venn:</p>
+                <p><IconButton label="Del" /><IconButton /></p>
+                </Practice>
+                <p>Bildet av biblioteket ble lest opp med beskrivelsen. Bølgestreken under er pynt, så TalkBack hoppet over den. De to knappene ser like ut, men bare den første sier «Del». Den andre har ikke noe navn, så du vet ikke hva den gjør før du trykker på den.</p>
+                <p>Mangler et bilde beskrivelse, kan TalkBack prøve å beskrive det med kunstig intelligens: sett fokus på bildet, åpne TalkBack-menyen med tre fingre og velg Beskriv bildet. Det finnes ikke på alle telefoner. Beskrivelsen kan være feil, og den vet ikke hvorfor bildet er der.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Lister",
+            body: (
+              <>
+                <p>Når du kommer til en liste, sier TalkBack at det er en liste og hvor mange punkter den har. Da vet du hvor mye som kommer, og om du vil høre alt.</p>
+                <p>Vil du forbi en lang liste, hopper du til neste overskrift. Du kan også legge til Lister i lesekontrollene: åpne TalkBack-menyen med tre fingre, velg TalkBack-innstillinger, så Tilpass menyer, så Tilpass lesekontroller, og slå på Lister.</p>
+                <p>Prøv: sveip til høyre inn i den første lista og lytt til hva TalkBack sier i starten. Hopp så forbi den lange lista med filialer til overskriften Kontakt.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Dette trenger du for å låne</h3>
+                <ul>
+                <li>Lånekort</li>
+                <li>En PIN-kode du velger selv</li>
+                <li>Bøkene du vil låne</li>
+                </ul>
+                <h3>Alle filialer</h3>
+                <ul>
+                <li>Fjordby sentrum</li>
+                <li>Nordhavna</li>
+                <li>Lia</li>
+                <li>Strand</li>
+                <li>Bakkeby</li>
+                <li>Øvre Fjordby</li>
+                <li>Sjøsiden</li>
+                <li>Skogen</li>
+                </ul>
+                <h3>Kontakt</h3>
+                <p>Ring oss eller kom innom skranken.</p>
+                </Practice>
+                <p>Hadde lista bare vært linjer med bindestrek foran, hadde ikke TalkBack sagt at det var en liste. Da vet du ikke hvor lang den er før du har hørt alt.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Tabeller",
+            body: (
+              <>
+                <p>I en tabell leser TalkBack én celle om gangen. I en godt laget tabell vet TalkBack også hvilken kolonne cellen hører til, så du hører at «35 kr» er et beløp og ikke noe annet.</p>
+                <p>Sveip til høyre går som vanlig fra celle til celle. Når du er inne i en tabell, får lesekontrollene også valgene Rader og Kolonner. Sveip opp og så ned i én bevegelse til du hører «Rader», og sveip ned for å gå til neste rad. Lytt etter om TalkBack sier navnet på kolonnen sammen med innholdet i cellen.</p>
+                <p>Prøv: finn ut hvor mye du måtte betale for å levere en bok for sent.</p>
+                <Practice title="Fjordby bibliotek">
+                <table>
+                <caption>Kontoen din i oktober</caption>
+                <thead><tr><th scope="col">Dato</th><th scope="col">Hva</th><th scope="col" className="amount">Beløp</th></tr></thead>
+                <tbody>
+                <tr><td>2. okt.</td><td>Reservering</td><td className="amount">10 kr</td></tr>
+                <tr><td>9. okt.</td><td>Kopier, 12 sider</td><td className="amount">24 kr</td></tr>
+                <tr><td>16. okt.</td><td>Levert for sent</td><td className="amount">35 kr</td></tr>
+                <tr><td>23. okt.</td><td>Tapt lånekort</td><td className="amount">50 kr</td></tr>
+                </tbody>
+                </table>
+                </Practice>
+                <p>Svaret er 35 kr, på raden Levert for sent. Hadde tabellen vært laget med vanlig tekst og mellomrom, hadde du hørt tallene uten å vite hva de betyr.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Vis mer og trekkspill",
+            body: (
+              <>
+                <p>Mange sider skjuler tekst bak en knapp, for eksempel spørsmål og svar. En god knapp sier om innholdet er skjult eller vist. TalkBack sier det etter navnet på knappen.</p>
+                <p>Prøv: finn ut om du kan levere bøker når biblioteket er stengt. Trykk to ganger på spørsmålet, og sveip til høyre for å høre svaret. Lytt til hva TalkBack sier om knappen før og etter at du trykker.</p>
+                <Practice title="Fjordby bibliotek">
+                <Disclosure title="Kan jeg levere når dere er stengt?"><p>Ja. Ved inngangen er det en luke for innlevering. Den er åpen hele døgnet.</p></Disclosure>
+                <Disclosure title="Hva koster det å levere for sent?"><p>35 kroner per bok.</p></Disclosure>
+                <Disclosure title="Kan jeg låne e-bøker?"><p>Ja, i appen.</p></Disclosure>
+                </Practice>
+                <p>Svaret kom rett etter knappen. Hadde det dukket opp et annet sted på siden, hadde du ikke funnet det. Og hadde ikke knappen sagt at innholdet var skjult, hadde du ikke visst at det var noe å åpne.</p>
+                <p>Spørsmålene er også overskrifter, så du kan hoppe mellom dem med overskrifter.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Dialoger",
+            body: (
+              <>
+                <p>En dialog legger seg over siden og venter på et svar, for eksempel «Er du sikker?». Når den åpnes, skal TalkBack flytte deg inn i den. Mens den er åpen, skal du ikke kunne sveipe deg ut til siden bak.</p>
+                <p>Prøv: trykk to ganger på «Slett lista di». Sveip til høyre gjennom dialogen, og videre forbi den siste knappen. Kommer du ut av dialogen? Velg så Avbryt.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Lista di</h3>
+                <PracticeDialog open="Slett lista di" title="Vil du slette lista di?"><p>Du mister de fire bøkene du har lagret.</p></PracticeDialog>
+                </Practice>
+                <p>Da dialogen lukket seg, kom du tilbake til knappen du trykket på, og du hørte hva som skjedde. Uten det havner du ofte øverst på siden og må lete deg tilbake.</p>
+                <p>Mange dialoger kan også lukkes med Tilbake: sveip ned og så til venstre i én bevegelse. Det virker ikke på alle nettsider. Da bruker du knappen for å lukke.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>Du har hørt hvordan bilder, lister, tabeller, innhold som kan skjules, og dialoger leses opp, og hva du går glipp av når de er laget dårlig.</p>
+          <p>Tenk på en side du har laget selv. Har ikonknappene navn? Er tabellene ekte tabeller? Hører du om noe er skjult eller vist?</p>
           <p>Husk å slå av TalkBack når du er ferdig.</p>
         </>
       ),
