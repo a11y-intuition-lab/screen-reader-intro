@@ -251,7 +251,17 @@ export default function App() {
     if (previous.current === key) return;
     previous.current = key;
     window.scrollTo(0, 0);
-    heading.current?.focus();
+    // Vent to bildeoppdateringer, så VoiceOver og TalkBack har fått med seg det nye
+    // innholdet før fokus flyttes. Ellers mister de plassen og hopper til nettleserens
+    // knapper øverst på skjermen.
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => heading.current?.focus());
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
   }, [key]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const tb = screen.tabbar;
@@ -267,7 +277,9 @@ export default function App() {
         </a>
       </header>
       <main>
-        <h1 ref={heading} tabIndex={-1}>
+        {/* key: ny overskrift for hver skjerm. Skjermlesere reagerer ikke alltid når fokus
+            settes på et element som allerede fantes og bare har fått ny tekst. */}
+        <h1 ref={heading} tabIndex={-1} key={key}>
           {screen.heading}
         </h1>
         {screen.body}
