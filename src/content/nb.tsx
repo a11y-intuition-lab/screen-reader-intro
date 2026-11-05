@@ -1,5 +1,7 @@
 // Innholdet i innføringen på norsk. Hvert trinn er én skjerm.
 import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SearchForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import { Restaurant } from '../components/restaurant';
+import dining from '../assets/dining.svg';
 import library from '../assets/library.svg';
 import wave from '../assets/wave.svg';
 import type { Content } from './types';
@@ -444,6 +446,76 @@ const content: Content = {
         </>
       ),
     },
+    {
+      id: "book-a-table",
+      title: "Bestill bord",
+      intro: "En oppgave der du bruker alt du har lært: finn fram på nettsiden til en restaurant, og bestill bord.",
+      steps: [
+          {
+            title: "Oppgaven",
+            body: (
+              <>
+                <p>Nå skal du bruke det du har lært, uten at vi forteller deg hvordan. På neste skjerm er nettsiden til en oppdiktet restaurant, Fjordkanten. Løs oppgaven med VoiceOver, og med skjermen skjult hvis du tør.</p>
+                <div className="box">
+                <ol>
+                <li>Finn ut når restauranten åpner på lørdag.</li>
+                <li>Finn ut hva hovedretten for vegetarianere koster.</li>
+                <li>Bestill bord til fire personer lørdag klokka 19. En av dere tåler ikke nøtter.</li>
+                </ol>
+                </div>
+                <p>Husk rotoren: Overskrifter, Landemerker og Skjemakontroller tar deg raskt dit du skal. Skjermgardinen slår du av og på ved å trykke tre ganger med tre fingre.</p>
+                <p>Det er ingen tidsfrist. Står du fast, finner du svarene og tips på skjermen etter.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Restaurant Fjordkanten",
+            body: (
+              <>
+                <p>Oppgaven: finn ut når restauranten åpner på lørdag, og hva hovedretten for vegetarianere koster. Bestill så bord til fire personer lørdag klokka 19. En av dere tåler ikke nøtter.</p>
+                <Practice title="Restaurant Fjordkanten">
+                <Restaurant image={dining} />
+                </Practice>
+                <p>Når du har bestilt, sveiper du til høyre til du hører «Neste», og trykker to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Hvordan gikk det?",
+            body: (
+              <>
+                <h2>Svarene</h2>
+                <ul>
+                <li>På lørdag åpner restauranten klokka 13. Det står i tabellen under overskriften Åpningstider.</li>
+                <li>Sopprisotto koster 245 kr. Den står i lista under overskriften Hovedretter.</li>
+                <li>Bestillingen er lørdag, 19:00, fire gjester, og nøtter i feltet for allergier. Under Spørsmål og svar står det at kokken tar hensyn til allergier.</li>
+                </ul>
+                <h2>Det som gjorde det mulig</h2>
+                <ul>
+                <li>Overskrifter som sier hva som kommer, så du kunne hoppe rett til Åpningstider og Meny.</li>
+                <li>En navigasjon med navnet Fjordkanten, med lenker som flytter deg til riktig sted på siden.</li>
+                <li>En ekte tabell, der dagen er overskrift for hver rad.</li>
+                <li>Lister i menyen, så du hørte hvor mange retter det var.</li>
+                <li>Radioknapper i grupper med navn, Dag og Klokkeslett, så du visste hva du valgte.</li>
+                <li>Feilmeldinger som ble lest sammen med feltet, og fokus som ble flyttet til den første feilen.</li>
+                <li>En dialog der du kunne sjekke bestillingen før du sendte den.</li>
+                <li>En bekreftelse som fikk fokus, så du hørte at bordet var bestilt.</li>
+                </ul>
+                <p>Tenk over hva som var vanskeligst. Det er ofte det samme som er vanskelig for de som bruker skjermleser hver dag, og det du bør teste først i det du lager selv.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>Du har fullført innføringen. Du kan nå bruke VoiceOver til å teste det du lager: hoppe mellom overskrifter og landemerker, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
+          <p>Vil du øve mer, går du tilbake til en del fra menyen.</p>
+          <p>Husk å slå av VoiceOver når du er ferdig.</p>
+        </>
+      ),
+    },
     ],
   },
   android: {
@@ -882,6 +954,76 @@ const content: Content = {
         <>
           <p>Du kan nå endre talehastigheten, la TalkBack lese alt, søke på skjermen, skrive raskere og høre når siden sier fra om språket.</p>
           <p>Tenk på en side du har laget selv. Sier den hvilket språk den er på? Får du beskjed når du har søkt?</p>
+          <p>Husk å slå av TalkBack når du er ferdig.</p>
+        </>
+      ),
+    },
+    {
+      id: "book-a-table",
+      title: "Bestill bord",
+      intro: "En oppgave der du bruker alt du har lært: finn fram på nettsiden til en restaurant, og bestill bord.",
+      steps: [
+          {
+            title: "Oppgaven",
+            body: (
+              <>
+                <p>Nå skal du bruke det du har lært, uten at vi forteller deg hvordan. På neste skjerm er nettsiden til en oppdiktet restaurant, Fjordkanten. Løs oppgaven med TalkBack, og med skjermen skjult hvis du tør.</p>
+                <div className="box">
+                <ol>
+                <li>Finn ut når restauranten åpner på lørdag.</li>
+                <li>Finn ut hva hovedretten for vegetarianere koster.</li>
+                <li>Bestill bord til fire personer lørdag klokka 19. En av dere tåler ikke nøtter.</li>
+                </ol>
+                </div>
+                <p>Husk lesekontrollene: Overskrifter og Kontroller tar deg raskt dit du skal. Skjermen skjuler du med Skjul skjermen i TalkBack-menyen.</p>
+                <p>Det er ingen tidsfrist. Står du fast, finner du svarene og tips på skjermen etter.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Restaurant Fjordkanten",
+            body: (
+              <>
+                <p>Oppgaven: finn ut når restauranten åpner på lørdag, og hva hovedretten for vegetarianere koster. Bestill så bord til fire personer lørdag klokka 19. En av dere tåler ikke nøtter.</p>
+                <Practice title="Restaurant Fjordkanten">
+                <Restaurant image={dining} />
+                </Practice>
+                <p>Når du har bestilt, sveiper du til høyre til du hører «Neste», og trykker to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Hvordan gikk det?",
+            body: (
+              <>
+                <h2>Svarene</h2>
+                <ul>
+                <li>På lørdag åpner restauranten klokka 13. Det står i tabellen under overskriften Åpningstider.</li>
+                <li>Sopprisotto koster 245 kr. Den står i lista under overskriften Hovedretter.</li>
+                <li>Bestillingen er lørdag, 19:00, fire gjester, og nøtter i feltet for allergier. Under Spørsmål og svar står det at kokken tar hensyn til allergier.</li>
+                </ul>
+                <h2>Det som gjorde det mulig</h2>
+                <ul>
+                <li>Overskrifter som sier hva som kommer, så du kunne hoppe rett til Åpningstider og Meny.</li>
+                <li>En navigasjon med navnet Fjordkanten, med lenker som flytter deg til riktig sted på siden.</li>
+                <li>En ekte tabell, der dagen er overskrift for hver rad.</li>
+                <li>Lister i menyen, så du hørte hvor mange retter det var.</li>
+                <li>Radioknapper i grupper med navn, Dag og Klokkeslett, så du visste hva du valgte.</li>
+                <li>Feilmeldinger som ble lest sammen med feltet, og fokus som ble flyttet til den første feilen.</li>
+                <li>En dialog der du kunne sjekke bestillingen før du sendte den.</li>
+                <li>En bekreftelse som fikk fokus, så du hørte at bordet var bestilt.</li>
+                </ul>
+                <p>Tenk over hva som var vanskeligst. Det er ofte det samme som er vanskelig for de som bruker skjermleser hver dag, og det du bør teste først i det du lager selv.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>Du har fullført innføringen. Du kan nå bruke TalkBack til å teste det du lager: hoppe mellom overskrifter og landemerker, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
+          <p>Vil du øve mer, går du tilbake til en del fra menyen.</p>
           <p>Husk å slå av TalkBack når du er ferdig.</p>
         </>
       ),

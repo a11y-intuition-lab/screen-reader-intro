@@ -184,17 +184,18 @@ export function IconButton({ label }: { label?: string }) {
 }
 
 /** Vis mer: knappen sier om innholdet er skjult eller utvidet. */
-export function Disclosure({ title, children }: { title: string; children: ReactNode }) {
+export function Disclosure({ title, level = 3, children }: { title: string; level?: 3 | 4; children: ReactNode }) {
+  const H = level === 4 ? 'h4' : 'h3';
   const id = useId();
   const [open, setOpen] = useState(false);
   return (
     <div className="disclosure">
-      <h3>
+      <H className="disclosure-heading">
         <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
           {title}
           <span className="sign" aria-hidden="true">{open ? '−' : '+'}</span>
         </button>
-      </h3>
+      </H>
       <div id={id} hidden={!open}>
         {children}
       </div>

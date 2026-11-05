@@ -1,5 +1,7 @@
 // Innholdet i innføringen på engelsk. Hvert trinn er én skjerm.
 import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SearchForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import { Restaurant } from '../components/restaurant';
+import dining from '../assets/dining.svg';
 import library from '../assets/library.svg';
 import wave from '../assets/wave.svg';
 import type { Content } from './types';
@@ -444,6 +446,76 @@ const content: Content = {
         </>
       ),
     },
+    {
+      id: "book-a-table",
+      title: "Book a table",
+      intro: "A task where you use everything you have learned: find your way on a restaurant website, and book a table.",
+      steps: [
+          {
+            title: "The task",
+            body: (
+              <>
+                <p>Now you use what you have learned, without us telling you how. On the next screen is the website of a made-up restaurant, Fjordkanten. Solve the task with VoiceOver, and with the screen hidden if you dare.</p>
+                <div className="box">
+                <ol>
+                <li>Find out when the restaurant opens on Saturday.</li>
+                <li>Find out what the vegetarian main course costs.</li>
+                <li>Book a table for four people on Saturday at 19:00. One of you cannot eat nuts.</li>
+                </ol>
+                </div>
+                <p>Remember the rotor: Headings, Landmarks and Form Controls take you quickly where you want to go. You turn the screen curtain on and off with a three-finger triple-tap.</p>
+                <p>There is no time limit. If you get stuck, you find the answers and tips on the screen after.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Fjordkanten restaurant",
+            body: (
+              <>
+                <p>The task: find out when the restaurant opens on Saturday, and what the vegetarian main course costs. Then book a table for four people on Saturday at 19:00. One of you cannot eat nuts.</p>
+                <Practice title="Fjordkanten restaurant">
+                <Restaurant image={dining} />
+                </Practice>
+                <p>When you have booked, swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "How did it go?",
+            body: (
+              <>
+                <h2>The answers</h2>
+                <ul>
+                <li>On Saturday the restaurant opens at 13. It is in the table under the heading Opening hours.</li>
+                <li>Mushroom risotto costs 245 kr. It is in the list under the heading Main courses.</li>
+                <li>The booking is Saturday, 19:00, four guests, and nuts in the field for allergies. Under Questions and answers it says the chef takes allergies into account.</li>
+                </ul>
+                <h2>What made it possible</h2>
+                <ul>
+                <li>Headings that say what comes next, so you could jump straight to Opening hours and Menu.</li>
+                <li>A navigation named Fjordkanten, with links that move you to the right place on the page.</li>
+                <li>A real table, where the day is the heading of each row.</li>
+                <li>Lists in the menu, so you heard how many dishes there were.</li>
+                <li>Radio buttons in named groups, Day and Time, so you knew what you were choosing.</li>
+                <li>Error messages that were read together with the field, and focus that moved to the first error.</li>
+                <li>A dialog where you could check the booking before sending it.</li>
+                <li>A confirmation that got focus, so you heard that the table was booked.</li>
+                </ul>
+                <p>Think about what was hardest. It is often the same thing that is hard for people who use a screen reader every day, and what you should test first in what you make yourself.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>You have completed the introduction. You can now use VoiceOver to test what you make: jump between headings and landmarks, fill in forms, and hear whether status messages and error messages come through.</p>
+          <p>To practise more, go back to a part from the menu.</p>
+          <p>Remember to turn off VoiceOver when you are done.</p>
+        </>
+      ),
+    },
     ],
   },
   android: {
@@ -882,6 +954,76 @@ const content: Content = {
         <>
           <p>You can now change the speech rate, let TalkBack read everything, search the screen, type faster, and hear when the page says which language it is in.</p>
           <p>Think of a page you have made yourself. Does it say which language it is in? Do you get a message when you have searched?</p>
+          <p>Remember to turn off TalkBack when you are done.</p>
+        </>
+      ),
+    },
+    {
+      id: "book-a-table",
+      title: "Book a table",
+      intro: "A task where you use everything you have learned: find your way on a restaurant website, and book a table.",
+      steps: [
+          {
+            title: "The task",
+            body: (
+              <>
+                <p>Now you use what you have learned, without us telling you how. On the next screen is the website of a made-up restaurant, Fjordkanten. Solve the task with TalkBack, and with the screen hidden if you dare.</p>
+                <div className="box">
+                <ol>
+                <li>Find out when the restaurant opens on Saturday.</li>
+                <li>Find out what the vegetarian main course costs.</li>
+                <li>Book a table for four people on Saturday at 19:00. One of you cannot eat nuts.</li>
+                </ol>
+                </div>
+                <p>Remember the reading controls: Headings and Controls take you quickly where you want to go. You hide the screen with Hide screen in the TalkBack menu.</p>
+                <p>There is no time limit. If you get stuck, you find the answers and tips on the screen after.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Fjordkanten restaurant",
+            body: (
+              <>
+                <p>The task: find out when the restaurant opens on Saturday, and what the vegetarian main course costs. Then book a table for four people on Saturday at 19:00. One of you cannot eat nuts.</p>
+                <Practice title="Fjordkanten restaurant">
+                <Restaurant image={dining} />
+                </Practice>
+                <p>When you have booked, swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "How did it go?",
+            body: (
+              <>
+                <h2>The answers</h2>
+                <ul>
+                <li>On Saturday the restaurant opens at 13. It is in the table under the heading Opening hours.</li>
+                <li>Mushroom risotto costs 245 kr. It is in the list under the heading Main courses.</li>
+                <li>The booking is Saturday, 19:00, four guests, and nuts in the field for allergies. Under Questions and answers it says the chef takes allergies into account.</li>
+                </ul>
+                <h2>What made it possible</h2>
+                <ul>
+                <li>Headings that say what comes next, so you could jump straight to Opening hours and Menu.</li>
+                <li>A navigation named Fjordkanten, with links that move you to the right place on the page.</li>
+                <li>A real table, where the day is the heading of each row.</li>
+                <li>Lists in the menu, so you heard how many dishes there were.</li>
+                <li>Radio buttons in named groups, Day and Time, so you knew what you were choosing.</li>
+                <li>Error messages that were read together with the field, and focus that moved to the first error.</li>
+                <li>A dialog where you could check the booking before sending it.</li>
+                <li>A confirmation that got focus, so you heard that the table was booked.</li>
+                </ul>
+                <p>Think about what was hardest. It is often the same thing that is hard for people who use a screen reader every day, and what you should test first in what you make yourself.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>You have completed the introduction. You can now use TalkBack to test what you make: jump between headings and landmarks, fill in forms, and hear whether status messages and error messages come through.</p>
+          <p>To practise more, go back to a part from the menu.</p>
           <p>Remember to turn off TalkBack when you are done.</p>
         </>
       ),

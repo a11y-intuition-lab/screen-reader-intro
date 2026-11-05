@@ -85,7 +85,7 @@ header { padding-top: calc(1rem + env(safe-area-inset-top)); }
 .practice h2 { border-top: 0; margin-top: 1rem; padding-top: 0; }
 .practice h3 { font-size: 1.15rem; margin: 1.25rem 0 .25rem; }
 label { display: block; font-weight: 600; margin-top: 1rem; }
-input[type="text"], input[type="email"], input[type="search"] { font: inherit; width: 100%; min-height: 3rem; padding: .5rem; border: 2px solid var(--muted); border-radius: .5rem; background: var(--bg); color: var(--ink); }
+input[type="text"], input[type="email"], input[type="search"], input[type="tel"], select, textarea { font: inherit; width: 100%; min-height: 3rem; padding: .5rem; border: 2px solid var(--muted); border-radius: .5rem; background: var(--bg); color: var(--ink); }
 input[aria-invalid="true"] { border-color: #b3261e; }
 .check { display: flex; gap: .5rem; align-items: center; font-weight: 400; }
 .check input { width: 1.5rem; height: 1.5rem; }
@@ -119,10 +119,17 @@ table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
 caption { text-align: left; font-weight: 600; margin-bottom: .5rem; }
 th, td { text-align: left; padding: .5rem .4rem; border-bottom: 1px solid var(--muted); }
 td.amount, th.amount { text-align: right; font-variant-numeric: tabular-nums; }
-.disclosure h3 { margin: .5rem 0; }
-.disclosure h3 button { width: 100%; text-align: left; background: var(--bg); color: var(--accent); }
+.disclosure-heading { margin: .5rem 0; }
+.disclosure-heading button { width: 100%; text-align: left; background: var(--bg); color: var(--accent); }
 .disclosure .sign { float: right; }
 dialog { max-width: min(30rem, calc(100% - 2rem)); border: 2px solid var(--accent); border-radius: .5rem; background: var(--bg); color: var(--ink); padding: 1rem 1.25rem; }
 dialog::backdrop { background: rgb(0 0 0 / .5); }
 .actions { display: flex; gap: .75rem; flex-wrap: wrap; }
 button.secondary { background: var(--bg); color: var(--accent); }
+
+/* Del 5: restauranten */
+.restaurant nav ul.inline { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.restaurant nav a { display: inline-block; padding: .4rem 0; }
+.restaurant h4 { font-size: 1.05rem; margin: 1rem 0 .25rem; }
+legend .error { display: block; }
+th[scope="row"] { font-weight: 400; }

@@ -25,7 +25,7 @@ const HOME = {
     before: 'Before you start',
     beforeBody: (
       <>
-        <p>Each part is five short steps and takes about 15 minutes. Headphones help.</p>
+        <p>Parts 1 to 4 have five short steps each and take about 15 minutes. At the end there is a task where you use everything. Headphones help.</p>
         <p>
           You can add the introduction to your home screen, so it opens like an app. On iPhone, tap Share in Safari and
           choose Add to Home Screen. On Android, open the Chrome menu and choose Add to Home screen.
@@ -53,7 +53,7 @@ const HOME = {
     before: 'Før du starter',
     beforeBody: (
       <>
-        <p>Hver del er fem korte trinn og tar omtrent 15 minutter. Bruk gjerne hodetelefoner.</p>
+        <p>Del 1 til 4 har fem korte trinn hver og tar omtrent 15 minutter. Til slutt kommer en oppgave der du bruker alt. Bruk gjerne hodetelefoner.</p>
         <p>
           Du kan legge innføringen på hjemskjermen, så åpnes den som en app. På iPhone trykker du på Del i Safari og
           velger Legg til på Hjem-skjerm. På Android åpner du menyen i Chrome og velger Legg til på startsiden.
@@ -197,8 +197,8 @@ function screenFor(route: Route): Screen {
   if (route.step === 'done') {
     const nextPart = partNo < c.parts.length;
     return {
-      title: `${t.done} – ${c.name}`,
-      heading: t.done,
+      title: `${nextPart ? t.done : t.allDone} – ${c.name}`,
+      heading: nextPart ? t.done : t.allDone,
       platform: c,
       body: part.done,
       tabbar: {
