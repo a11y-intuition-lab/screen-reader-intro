@@ -1,5 +1,5 @@
 // Innholdet i innføringen på engelsk. Hvert trinn er én skjerm.
-import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SearchForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
 import library from '../assets/library.svg';
 import wave from '../assets/wave.svg';
 import type { Content } from './types';
@@ -327,6 +327,123 @@ const content: Content = {
         </>
       ),
     },
+    {
+      id: "take-control",
+      title: "Take control",
+      intro: "Five steps about using the screen reader faster: speech rate, reading everything, searching, typing and language.",
+      steps: [
+          {
+            title: "Speech rate",
+            body: (
+              <>
+                <p>Many people who use a screen reader every day listen much faster than the default rate. That is how they skim a page as fast as you do with your eyes.</p>
+                <p>You change the speaking rate with the rotor. Rotate two fingers on the screen as if you are turning a dial, until you hear “Speaking Rate”. Swipe up to make it faster, and down to make it slower. If you never hear “Speaking Rate”, add it: open Settings, then Accessibility, then VoiceOver, then Rotor.</p>
+                <p>Try: turn the rate up a little, and swipe right to the text in the practice area. Go up one more step, and listen again. Set it back when you think it is too fast.</p>
+                <Practice title="Fjordby library">
+                <p>Fjordby library opened in 1927 in an old warehouse by the quay. In the first years it had only three shelves and one librarian, who was also a teacher at the school. Today the library has eight branches and more than 40,000 books.</p>
+                </Practice>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Read everything",
+            body: (
+              <>
+                <p>Sometimes you just want to hear everything, for example an article. Then the screen reader can keep reading by itself, instead of you swiping for each thing.</p>
+                <p>Swipe up with two fingers to have the whole screen read from the top. Swipe down with two fingers to read from where you are. Tap with two fingers to pause, and tap with two fingers again to continue.</p>
+                <p>Try: swipe right to the heading in the practice area, and let VoiceOver read the rest of the screen. Stop when you have heard enough.</p>
+                <Practice title="Fjordby library">
+                <h3>The story of the library</h3>
+                <p>The warehouse by the quay was too small after only ten years. The town built a new house on the square, with a reading room and a children's section.</p>
+                <p>In 1980 the first branch opened, in North harbour. It was a bus that drove out to people who lived far from the centre.</p>
+                <p>Today you can borrow books, games and tools, and you can read e-books in the app.</p>
+                </Practice>
+                
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Find on the screen",
+            body: (
+              <>
+                <p>On a long page it is slow to swipe your way to what you are looking for. The screen reader can search for text on the screen for you.</p>
+                <p>On iPhone it is called the Item Chooser. Triple-tap with two fingers. You get a list of what is on the screen, and a search field at the top. Type a few letters in the search field, and choose the result you want to go to. To close the Item Chooser without choosing anything, do a two-finger scrub.</p>
+                <p>Try: find the book The whale who sang in the list below, without swiping through the whole list.</p>
+                <Practice title="Fjordby library">
+                <h3>New books</h3>
+                <ul>
+                <li>All we did not say</li>
+                <li>The bakery on Beach Street</li>
+                <li>A letter from Lia</li>
+                <li>The last butterflies</li>
+                <li>The daughters of Bakkeby</li>
+                <li>A winter in North harbour</li>
+                <li>Hiking for everyone</li>
+                <li>The lighthouse keeper's daughter</li>
+                <li>Forgotten gardens</li>
+                <li>The garden by the fjord</li>
+                <li>The house in the woods</li>
+                <li>The whale who sang</li>
+                <li>Whales of the North Sea</li>
+                <li>Ice and light</li>
+                <li>A map of nowhere</li>
+                <li>The light over Lia</li>
+                <li>Dark waters</li>
+                <li>When the boats come in</li>
+                <li>The night before the storm</li>
+                <li>Shadows on the seaside</li>
+                <li>Quiet days</li>
+                <li>Aunt Inger's recipes</li>
+                <li>Under the bridge</li>
+                <li>The wind from the west</li>
+                </ul>
+                </Practice>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Typing",
+            body: (
+              <>
+                <p>Typing is what takes the longest with a screen reader on a phone. That is why many use a faster way of typing, or dictate.</p>
+                <p>By default you find a key by dragging your finger across the keyboard, and double-tap to type it. It is faster with touch typing: the key is typed when you lift your finger. You switch with the rotor: choose Typing Mode, and swipe up or down.</p><p>You can also dictate: double-tap with two fingers on the keyboard to start, and the same to stop. Dictation must be turned on in Settings, under General and Keyboards.</p>
+                <p>Try: search for “whale” in the catalogue. Listen to the message that comes after you search.</p>
+                <Practice title="Fjordby library">
+                <SearchForm items={['All we did not say', 'The bakery on Beach Street', 'A letter from Lia', 'The last butterflies', 'The daughters of Bakkeby', 'A winter in North harbour', 'Hiking for everyone', "The lighthouse keeper's daughter", 'Forgotten gardens', 'The garden by the fjord', 'The house in the woods', 'The whale who sang', 'Whales of the North Sea', 'Ice and light', 'A map of nowhere', 'The light over Lia', 'Dark waters', 'When the boats come in', 'The night before the storm', 'Shadows on the seaside', 'Quiet days', "Aunt Inger's recipes", 'Under the bridge', 'The wind from the west']} />
+                </Practice>
+                <p>After the search you heard how many hits there were, without looking for them. That is a status message, which you learned about in part 2.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Language",
+            body: (
+              <>
+                <p>When a page has text in more than one language, the page can say which language each part is in. Then VoiceOver changes voice, and the pronunciation is right. Without it, it reads Norwegian with English pronunciation, and it is hard to understand.</p>
+                <p>You do not need to do anything for the voice to change. VoiceOver changes it when the page says which language the text is in.</p>
+                <p>Try: swipe through the two sentences below. The text is the same, but only the first one says it is in Norwegian.</p>
+                <Practice title="Fjordby library">
+                <p lang="nb">Et bibliotek er ikke en luksus, men noe vi trenger for å leve.</p>
+                <p>Et bibliotek er ikke en luksus, men noe vi trenger for å leve.</p>
+                </Practice>
+                <p>The first sentence was read with a Norwegian voice. The second was read as if it were English. The same goes for the language of the page itself: if it is wrong, the whole page is read with the wrong voice.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>You can now change the speech rate, let VoiceOver read everything, search the screen, type faster, and hear when the page says which language it is in.</p>
+          <p>Think of a page you have made yourself. Does it say which language it is in? Do you get a message when you have searched?</p>
+          <p>Remember to turn off VoiceOver when you are done.</p>
+        </>
+      ),
+    },
     ],
   },
   android: {
@@ -648,6 +765,123 @@ const content: Content = {
         <>
           <p>You have heard how images, lists, tables, content that can be hidden, and dialogs are read, and what you miss when they are built badly.</p>
           <p>Think of a page you have made yourself. Do the icon buttons have names? Are the tables real tables? Can you hear whether something is hidden or shown?</p>
+          <p>Remember to turn off TalkBack when you are done.</p>
+        </>
+      ),
+    },
+    {
+      id: "take-control",
+      title: "Take control",
+      intro: "Five steps about using the screen reader faster: speech rate, reading everything, searching, typing and language.",
+      steps: [
+          {
+            title: "Speech rate",
+            body: (
+              <>
+                <p>Many people who use a screen reader every day listen much faster than the default rate. That is how they skim a page as fast as you do with your eyes.</p>
+                <p>You change the speech rate with the reading controls. Swipe up then down in one movement until you hear “Speech rate”. Swipe up to make it faster, and down to make it slower.</p>
+                <p>Try: turn the rate up a little, and swipe right to the text in the practice area. Go up one more step, and listen again. Set it back when you think it is too fast.</p>
+                <Practice title="Fjordby library">
+                <p>Fjordby library opened in 1927 in an old warehouse by the quay. In the first years it had only three shelves and one librarian, who was also a teacher at the school. Today the library has eight branches and more than 40,000 books.</p>
+                </Practice>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Read everything",
+            body: (
+              <>
+                <p>Sometimes you just want to hear everything, for example an article. Then the screen reader can keep reading by itself, instead of you swiping for each thing.</p>
+                <p>Tap with three fingers to open the TalkBack menu, and choose Read from focused item. TalkBack reads everything from where you are, and continues on the next screen. Touch the screen to stop.</p>
+                <p>Try: swipe right to the heading in the practice area, and let TalkBack read the rest of the screen. Stop when you have heard enough.</p>
+                <Practice title="Fjordby library">
+                <h3>The story of the library</h3>
+                <p>The warehouse by the quay was too small after only ten years. The town built a new house on the square, with a reading room and a children's section.</p>
+                <p>In 1980 the first branch opened, in North harbour. It was a bus that drove out to people who lived far from the centre.</p>
+                <p>Today you can borrow books, games and tools, and you can read e-books in the app.</p>
+                </Practice>
+                <p>To find out exactly what TalkBack said, open the TalkBack menu and choose Copy last spoken phrase. Then you can paste it somewhere else, for example in a bug report.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Find on the screen",
+            body: (
+              <>
+                <p>On a long page it is slow to swipe your way to what you are looking for. The screen reader can search for text on the screen for you.</p>
+                <p>On Android it is called screen search. Tap and hold with three fingers, or open the TalkBack menu and choose Screen search. Type a few letters, and choose the result you want to go to from the list.</p>
+                <p>Try: find the book The whale who sang in the list below, without swiping through the whole list.</p>
+                <Practice title="Fjordby library">
+                <h3>New books</h3>
+                <ul>
+                <li>All we did not say</li>
+                <li>The bakery on Beach Street</li>
+                <li>A letter from Lia</li>
+                <li>The last butterflies</li>
+                <li>The daughters of Bakkeby</li>
+                <li>A winter in North harbour</li>
+                <li>Hiking for everyone</li>
+                <li>The lighthouse keeper's daughter</li>
+                <li>Forgotten gardens</li>
+                <li>The garden by the fjord</li>
+                <li>The house in the woods</li>
+                <li>The whale who sang</li>
+                <li>Whales of the North Sea</li>
+                <li>Ice and light</li>
+                <li>A map of nowhere</li>
+                <li>The light over Lia</li>
+                <li>Dark waters</li>
+                <li>When the boats come in</li>
+                <li>The night before the storm</li>
+                <li>Shadows on the seaside</li>
+                <li>Quiet days</li>
+                <li>Aunt Inger's recipes</li>
+                <li>Under the bridge</li>
+                <li>The wind from the west</li>
+                </ul>
+                </Practice>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Typing",
+            body: (
+              <>
+                <p>Typing is what takes the longest with a screen reader on a phone. That is why many use a faster way of typing, or dictate.</p>
+                <p>Drag your finger across the keyboard until you hear the letter you want, and lift your finger to type it. Some keys, like Enter, need a double-tap. Close the keyboard with Back: swipe down then left in one movement.</p><p>You can also tap the microphone on the keyboard and say what you want to type.</p>
+                <p>Try: search for “whale” in the catalogue. Listen to the message that comes after you search.</p>
+                <Practice title="Fjordby library">
+                <SearchForm items={['All we did not say', 'The bakery on Beach Street', 'A letter from Lia', 'The last butterflies', 'The daughters of Bakkeby', 'A winter in North harbour', 'Hiking for everyone', "The lighthouse keeper's daughter", 'Forgotten gardens', 'The garden by the fjord', 'The house in the woods', 'The whale who sang', 'Whales of the North Sea', 'Ice and light', 'A map of nowhere', 'The light over Lia', 'Dark waters', 'When the boats come in', 'The night before the storm', 'Shadows on the seaside', 'Quiet days', "Aunt Inger's recipes", 'Under the bridge', 'The wind from the west']} />
+                </Practice>
+                <p>After the search you heard how many hits there were, without looking for them. That is a status message, which you learned about in part 2.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          },
+          {
+            title: "Language",
+            body: (
+              <>
+                <p>When a page has text in more than one language, the page can say which language each part is in. Then TalkBack changes voice, and the pronunciation is right. Without it, it reads Norwegian with English pronunciation, and it is hard to understand.</p>
+                <p>You do not need to do anything for the voice to change. TalkBack changes it when the page says which language the text is in. You can also change the language yourself with the reading control Spoken language.</p>
+                <p>Try: swipe through the two sentences below. The text is the same, but only the first one says it is in Norwegian.</p>
+                <Practice title="Fjordby library">
+                <p lang="nb">Et bibliotek er ikke en luksus, men noe vi trenger for å leve.</p>
+                <p>Et bibliotek er ikke en luksus, men noe vi trenger for å leve.</p>
+                </Practice>
+                <p>The first sentence was read with a Norwegian voice. The second was read as if it were English. The same goes for the language of the page itself: if it is wrong, the whole page is read with the wrong voice.</p>
+                <p>Swipe right until you hear “Next”, and double-tap.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>You can now change the speech rate, let TalkBack read everything, search the screen, type faster, and hear when the page says which language it is in.</p>
+          <p>Think of a page you have made yourself. Does it say which language it is in? Do you get a message when you have searched?</p>
           <p>Remember to turn off TalkBack when you are done.</p>
         </>
       ),

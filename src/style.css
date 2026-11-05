@@ -85,7 +85,7 @@ header { padding-top: calc(1rem + env(safe-area-inset-top)); }
 .practice h2 { border-top: 0; margin-top: 1rem; padding-top: 0; }
 .practice h3 { font-size: 1.15rem; margin: 1.25rem 0 .25rem; }
 label { display: block; font-weight: 600; margin-top: 1rem; }
-input[type="text"], input[type="email"] { font: inherit; width: 100%; min-height: 3rem; padding: .5rem; border: 2px solid var(--muted); border-radius: .5rem; background: var(--bg); color: var(--ink); }
+input[type="text"], input[type="email"], input[type="search"] { font: inherit; width: 100%; min-height: 3rem; padding: .5rem; border: 2px solid var(--muted); border-radius: .5rem; background: var(--bg); color: var(--ink); }
 input[aria-invalid="true"] { border-color: #b3261e; }
 .check { display: flex; gap: .5rem; align-items: center; font-weight: 400; }
 .check input { width: 1.5rem; height: 1.5rem; }

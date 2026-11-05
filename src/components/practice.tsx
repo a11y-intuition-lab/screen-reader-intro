@@ -243,3 +243,44 @@ export function PracticeDialog({ open: openLabel, title, children }: { open: str
     </>
   );
 }
+
+const SEARCH = {
+  en: { label: 'Search the catalogue', submit: 'Search', empty: 'Type something to search for.', hits: (n: number, q: string) => `${n} ${n === 1 ? 'hit' : 'hits'} for “${q}”.` },
+  nb: { label: 'Søk i katalogen', submit: 'Søk', empty: 'Skriv noe å søke etter.', hits: (n: number, q: string) => `${n} treff på «${q}».` },
+};
+
+/** Søkefelt som gir antall treff som statusmelding. Treffene finnes i lista som sendes inn. */
+export function SearchForm({ items }: { items: string[] }) {
+  const t = SEARCH[useLang()];
+  const id = useId();
+  const input = useRef<HTMLInputElement>(null);
+  const [status, setStatus] = useState('');
+  const [hits, setHits] = useState<string[]>([]);
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const q = input.current?.value.trim() ?? '';
+    const found = q ? items.filter((i) => i.toLowerCase().includes(q.toLowerCase())) : [];
+    setHits(found);
+    setStatus('');
+    setTimeout(() => setStatus(q ? t.hits(found.length, q) : t.empty), 100);
+  };
+  return (
+    <>
+      <form role="search" onSubmit={onSubmit}>
+        <label htmlFor={id}>{t.label}</label>
+        <input type="search" id={id} ref={input} autoComplete="off" />
+        <p>
+          <button type="submit">{t.submit}</button>
+        </p>
+      </form>
+      <p role="status">{status}</p>
+      {hits.length > 0 && (
+        <ul>
+          {hits.map((h) => (
+            <li key={h}>{h}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}

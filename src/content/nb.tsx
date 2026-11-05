@@ -1,5 +1,5 @@
 // Innholdet i innføringen på norsk. Hvert trinn er én skjerm.
-import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
+import { Disclosure, IconButton, InPage, Practice, PracticeDialog, PracticeForm, SearchForm, SilentButton, StatusButton, ToggleButton } from '../components/practice';
 import library from '../assets/library.svg';
 import wave from '../assets/wave.svg';
 import type { Content } from './types';
@@ -327,6 +327,123 @@ const content: Content = {
         </>
       ),
     },
+    {
+      id: "take-control",
+      title: "Ta kontroll",
+      intro: "Fem trinn om å bruke skjermleseren raskere: talehastighet, lese alt, søke, skrive og språk.",
+      steps: [
+          {
+            title: "Talehastighet",
+            body: (
+              <>
+                <p>Mange som bruker skjermleser hver dag, lytter mye raskere enn standardhastigheten. Det er slik de rekker å skumme en side like raskt som du gjør med øynene.</p>
+                <p>Du endrer talehastigheten med rotoren. Roter to fingre på skjermen som om du dreier på et hjul, til du hører «Talehastighet». Sveip opp for å gjøre den raskere, og ned for å gjøre den saktere. Hører du aldri «Talehastighet», legger du det til: åpne Innstillinger, så Tilgjengelighet, så VoiceOver, så Rotor.</p>
+                <p>Prøv: sett hastigheten litt opp, og sveip til høyre til teksten i øvingsområdet. Gå opp ett hakk til, og lytt igjen. Sett den tilbake når du synes det går for fort.</p>
+                <Practice title="Fjordby bibliotek">
+                <p>Fjordby bibliotek ble åpnet i 1927 i et gammelt pakkhus ved kaia. De første årene hadde det bare tre hyller og én bibliotekar, som også var lærer på skolen. I dag har biblioteket åtte filialer, og over 40 000 bøker.</p>
+                </Practice>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Lese alt",
+            body: (
+              <>
+                <p>Noen ganger vil du bare høre alt, for eksempel en artikkel. Da kan skjermleseren lese videre av seg selv, i stedet for at du sveiper for hver ting.</p>
+                <p>Sveip opp med to fingre for å få hele skjermen lest opp fra toppen. Sveip ned med to fingre for å lese fra der du er. Trykk med to fingre for å sette opplesingen på pause, og trykk med to fingre igjen for å fortsette.</p>
+                <p>Prøv: sveip til høyre til overskriften i øvingsområdet, og la VoiceOver lese resten av skjermen. Stopp når du har hørt nok.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Historien om biblioteket</h3>
+                <p>Pakkhuset ved kaia ble for lite allerede etter ti år. Byen bygde et nytt hus på torget, med lesesal og egen avdeling for barn.</p>
+                <p>I 1980 kom den første filialen, i Nordhavna. Den lå i en buss som kjørte rundt til de som bodde langt fra sentrum.</p>
+                <p>I dag kan du låne bøker, spill og verktøy, og du kan lese e-bøker i appen.</p>
+                </Practice>
+                
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Finn på skjermen",
+            body: (
+              <>
+                <p>På en lang side er det tregt å sveipe deg fram til det du leter etter. Skjermleseren kan søke etter tekst på skjermen for deg.</p>
+                <p>På iPhone heter det objektvelgeren. Trykk tre ganger med to fingre. Da får du en liste over det som er på skjermen, og et søkefelt øverst. Skriv noen bokstaver i søkefeltet, og velg treffet du vil til. Vil du lukke objektvelgeren uten å velge noe, gjør du en sikksakkbevegelse med to fingre.</p>
+                <p>Prøv: finn boka Hvalen som sang i lista under, uten å sveipe gjennom hele lista.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Nye bøker</h3>
+                <ul>
+                <li>Alt vi ikke sa</li>
+                <li>Bakeriet i Strandgata</li>
+                <li>Brevet fra Lia</li>
+                <li>De siste sommerfuglene</li>
+                <li>Døtrene på Bakkeby</li>
+                <li>En vinter i Nordhavna</li>
+                <li>Fjellvandring for alle</li>
+                <li>Fyrvokterens datter</li>
+                <li>Glemte hager</li>
+                <li>Hagen ved fjorden</li>
+                <li>Huset i skogen</li>
+                <li>Hvalen som sang</li>
+                <li>Hvaler i Nordsjøen</li>
+                <li>Is og lys</li>
+                <li>Kart over ingen steder</li>
+                <li>Lyset over Lia</li>
+                <li>Mørke vann</li>
+                <li>Når båtene kommer</li>
+                <li>Natten før stormen</li>
+                <li>Skyggene i Sjøsiden</li>
+                <li>Stille dager</li>
+                <li>Tante Ingers oppskrifter</li>
+                <li>Under brua</li>
+                <li>Vinden fra vest</li>
+                </ul>
+                </Practice>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Skrive",
+            body: (
+              <>
+                <p>Å skrive er det som tar lengst tid med skjermleser på mobil. Derfor bruker mange en raskere skrivemåte, eller de dikterer.</p>
+                <p>Som standard finner du en tast ved å dra fingeren over tastaturet, og trykker to ganger for å skrive den. Det går raskere med trykk og slipp-skriving: da skriver du tasten når du løfter fingeren. Du bytter med rotoren: velg Skrivemodus, og sveip opp eller ned.</p><p>Du kan også diktere: trykk to ganger med to fingre på tastaturet for å starte, og det samme for å stoppe. Det krever at diktering er slått på i Innstillinger, under Generelt og Tastaturer.</p>
+                <p>Prøv: søk etter «hval» i katalogen. Lytt til meldingen som kommer etter at du har søkt.</p>
+                <Practice title="Fjordby bibliotek">
+                <SearchForm items={['Alt vi ikke sa', 'Bakeriet i Strandgata', 'Brevet fra Lia', 'De siste sommerfuglene', 'Døtrene på Bakkeby', 'En vinter i Nordhavna', 'Fjellvandring for alle', 'Fyrvokterens datter', 'Glemte hager', 'Hagen ved fjorden', 'Huset i skogen', 'Hvalen som sang', 'Hvaler i Nordsjøen', 'Is og lys', 'Kart over ingen steder', 'Lyset over Lia', 'Mørke vann', 'Når båtene kommer', 'Natten før stormen', 'Skyggene i Sjøsiden', 'Stille dager', 'Tante Ingers oppskrifter', 'Under brua', 'Vinden fra vest']} />
+                </Practice>
+                <p>Etter søket hørte du hvor mange treff det ble, uten å lete etter dem. Det er en statusmelding, som du lærte om i del 2.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Språk",
+            body: (
+              <>
+                <p>Når en side har tekst på flere språk, kan siden si hvilket språk hver del er på. Da bytter VoiceOver stemme, og uttalen blir riktig. Uten det leser den engelsk med norsk uttale, og det blir vanskelig å forstå.</p>
+                <p>Du trenger ikke gjøre noe for at stemmen skal bytte. VoiceOver bytter selv når siden sier hvilket språk teksten er på.</p>
+                <p>Prøv: sveip gjennom de to sitatene under. Teksten er den samme, men bare den første sier at den er på engelsk.</p>
+                <Practice title="Fjordby bibliotek">
+                <p lang="en">A library is not a luxury but one of the necessities of life.</p>
+                <p>A library is not a luxury but one of the necessities of life.</p>
+                </Practice>
+                <p>Det første sitatet ble lest med engelsk stemme. Det andre ble lest som om det var norsk. Det samme gjelder sidens eget språk: står det feil, leses hele siden med feil stemme.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>Du kan nå endre talehastigheten, la VoiceOver lese alt, søke på skjermen, skrive raskere og høre når siden sier fra om språket.</p>
+          <p>Tenk på en side du har laget selv. Sier den hvilket språk den er på? Får du beskjed når du har søkt?</p>
+          <p>Husk å slå av VoiceOver når du er ferdig.</p>
+        </>
+      ),
+    },
     ],
   },
   android: {
@@ -648,6 +765,123 @@ const content: Content = {
         <>
           <p>Du har hørt hvordan bilder, lister, tabeller, innhold som kan skjules, og dialoger leses opp, og hva du går glipp av når de er laget dårlig.</p>
           <p>Tenk på en side du har laget selv. Har ikonknappene navn? Er tabellene ekte tabeller? Hører du om noe er skjult eller vist?</p>
+          <p>Husk å slå av TalkBack når du er ferdig.</p>
+        </>
+      ),
+    },
+    {
+      id: "take-control",
+      title: "Ta kontroll",
+      intro: "Fem trinn om å bruke skjermleseren raskere: talehastighet, lese alt, søke, skrive og språk.",
+      steps: [
+          {
+            title: "Talehastighet",
+            body: (
+              <>
+                <p>Mange som bruker skjermleser hver dag, lytter mye raskere enn standardhastigheten. Det er slik de rekker å skumme en side like raskt som du gjør med øynene.</p>
+                <p>Du endrer talehastigheten med lesekontrollene. Sveip opp og så ned i én bevegelse til du hører «Talehastighet». Sveip opp for å gjøre den raskere, og ned for å gjøre den saktere.</p>
+                <p>Prøv: sett hastigheten litt opp, og sveip til høyre til teksten i øvingsområdet. Gå opp ett hakk til, og lytt igjen. Sett den tilbake når du synes det går for fort.</p>
+                <Practice title="Fjordby bibliotek">
+                <p>Fjordby bibliotek ble åpnet i 1927 i et gammelt pakkhus ved kaia. De første årene hadde det bare tre hyller og én bibliotekar, som også var lærer på skolen. I dag har biblioteket åtte filialer, og over 40 000 bøker.</p>
+                </Practice>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Lese alt",
+            body: (
+              <>
+                <p>Noen ganger vil du bare høre alt, for eksempel en artikkel. Da kan skjermleseren lese videre av seg selv, i stedet for at du sveiper for hver ting.</p>
+                <p>Trykk med tre fingre for å åpne TalkBack-menyen, og velg Les fra elementet i fokus. TalkBack leser alt fra der du er, og fortsetter på neste skjerm. Trykk på skjermen for å stoppe.</p>
+                <p>Prøv: sveip til høyre til overskriften i øvingsområdet, og la TalkBack lese resten av skjermen. Stopp når du har hørt nok.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Historien om biblioteket</h3>
+                <p>Pakkhuset ved kaia ble for lite allerede etter ti år. Byen bygde et nytt hus på torget, med lesesal og egen avdeling for barn.</p>
+                <p>I 1980 kom den første filialen, i Nordhavna. Den lå i en buss som kjørte rundt til de som bodde langt fra sentrum.</p>
+                <p>I dag kan du låne bøker, spill og verktøy, og du kan lese e-bøker i appen.</p>
+                </Practice>
+                <p>Vil du vite nøyaktig hva TalkBack sa, åpner du TalkBack-menyen og velger Kopiér den siste uttalte frasen. Da kan du lime den inn et annet sted, for eksempel i en feilrapport.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Finn på skjermen",
+            body: (
+              <>
+                <p>På en lang side er det tregt å sveipe deg fram til det du leter etter. Skjermleseren kan søke etter tekst på skjermen for deg.</p>
+                <p>På Android heter det skjermsøk. Trykk og hold med tre fingre, eller åpne TalkBack-menyen og velg Skjermsøk. Skriv noen bokstaver, og velg treffet du vil til fra lista.</p>
+                <p>Prøv: finn boka Hvalen som sang i lista under, uten å sveipe gjennom hele lista.</p>
+                <Practice title="Fjordby bibliotek">
+                <h3>Nye bøker</h3>
+                <ul>
+                <li>Alt vi ikke sa</li>
+                <li>Bakeriet i Strandgata</li>
+                <li>Brevet fra Lia</li>
+                <li>De siste sommerfuglene</li>
+                <li>Døtrene på Bakkeby</li>
+                <li>En vinter i Nordhavna</li>
+                <li>Fjellvandring for alle</li>
+                <li>Fyrvokterens datter</li>
+                <li>Glemte hager</li>
+                <li>Hagen ved fjorden</li>
+                <li>Huset i skogen</li>
+                <li>Hvalen som sang</li>
+                <li>Hvaler i Nordsjøen</li>
+                <li>Is og lys</li>
+                <li>Kart over ingen steder</li>
+                <li>Lyset over Lia</li>
+                <li>Mørke vann</li>
+                <li>Når båtene kommer</li>
+                <li>Natten før stormen</li>
+                <li>Skyggene i Sjøsiden</li>
+                <li>Stille dager</li>
+                <li>Tante Ingers oppskrifter</li>
+                <li>Under brua</li>
+                <li>Vinden fra vest</li>
+                </ul>
+                </Practice>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Skrive",
+            body: (
+              <>
+                <p>Å skrive er det som tar lengst tid med skjermleser på mobil. Derfor bruker mange en raskere skrivemåte, eller de dikterer.</p>
+                <p>Dra fingeren over tastaturet til du hører bokstaven du vil ha, og løft fingeren for å skrive den. Noen taster, som Enter, må du trykke to ganger på. Lukk tastaturet med Tilbake: sveip ned og så til venstre i én bevegelse.</p><p>Du kan også trykke på mikrofonen på tastaturet og si det du vil skrive.</p>
+                <p>Prøv: søk etter «hval» i katalogen. Lytt til meldingen som kommer etter at du har søkt.</p>
+                <Practice title="Fjordby bibliotek">
+                <SearchForm items={['Alt vi ikke sa', 'Bakeriet i Strandgata', 'Brevet fra Lia', 'De siste sommerfuglene', 'Døtrene på Bakkeby', 'En vinter i Nordhavna', 'Fjellvandring for alle', 'Fyrvokterens datter', 'Glemte hager', 'Hagen ved fjorden', 'Huset i skogen', 'Hvalen som sang', 'Hvaler i Nordsjøen', 'Is og lys', 'Kart over ingen steder', 'Lyset over Lia', 'Mørke vann', 'Når båtene kommer', 'Natten før stormen', 'Skyggene i Sjøsiden', 'Stille dager', 'Tante Ingers oppskrifter', 'Under brua', 'Vinden fra vest']} />
+                </Practice>
+                <p>Etter søket hørte du hvor mange treff det ble, uten å lete etter dem. Det er en statusmelding, som du lærte om i del 2.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          },
+          {
+            title: "Språk",
+            body: (
+              <>
+                <p>Når en side har tekst på flere språk, kan siden si hvilket språk hver del er på. Da bytter TalkBack stemme, og uttalen blir riktig. Uten det leser den engelsk med norsk uttale, og det blir vanskelig å forstå.</p>
+                <p>Du trenger ikke gjøre noe for at stemmen skal bytte. TalkBack bytter selv når siden sier hvilket språk teksten er på. Du kan også bytte språk selv med lesekontrollen Talespråk.</p>
+                <p>Prøv: sveip gjennom de to sitatene under. Teksten er den samme, men bare den første sier at den er på engelsk.</p>
+                <Practice title="Fjordby bibliotek">
+                <p lang="en">A library is not a luxury but one of the necessities of life.</p>
+                <p>A library is not a luxury but one of the necessities of life.</p>
+                </Practice>
+                <p>Det første sitatet ble lest med engelsk stemme. Det andre ble lest som om det var norsk. Det samme gjelder sidens eget språk: står det feil, leses hele siden med feil stemme.</p>
+                <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
+              </>
+            ),
+          }
+        ],
+      done: (
+        <>
+          <p>Du kan nå endre talehastigheten, la TalkBack lese alt, søke på skjermen, skrive raskere og høre når siden sier fra om språket.</p>
+          <p>Tenk på en side du har laget selv. Sier den hvilket språk den er på? Får du beskjed når du har søkt?</p>
           <p>Husk å slå av TalkBack når du er ferdig.</p>
         </>
       ),
