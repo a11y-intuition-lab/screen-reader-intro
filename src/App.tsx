@@ -132,6 +132,8 @@ function screenFor(route: Route): Screen {
       body: (
         <>
           {h.body}
+          <h2>{h.before}</h2>
+          {h.beforeBody}
           <h2>{h.choose}</h2>
           <ul className="choices">
             <li>
@@ -141,8 +143,6 @@ function screenFor(route: Route): Screen {
               <a href={href({ lang, platform: 'android' })}>Android: TalkBack</a>
             </li>
           </ul>
-          <h2>{h.before}</h2>
-          {h.beforeBody}
         </>
       ),
       tabbar: {},
