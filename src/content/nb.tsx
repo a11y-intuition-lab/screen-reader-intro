@@ -442,6 +442,9 @@ const content: Content = {
         <>
           <p>Du kan nå endre talehastigheten, la VoiceOver lese alt, søke på skjermen, skrive raskere og høre når siden sier fra om språket.</p>
           <p>Tenk på en side du har laget selv. Sier den hvilket språk den er på? Får du beskjed når du har søkt?</p>
+          <div className="box">
+            <p><strong>Skal du vise dette for andre?</strong> Slå på Tekstingspanel: åpne Innstillinger, så Tilgjengelighet, så VoiceOver, så Tekstingspanel. Da står alt VoiceOver sier som tekst nederst på skjermen. Det passer til demoer, skjermopptak og rom der lyden er skrudd av, og alle ser nøyaktig hva skjermleseren leser opp. Slå også på Stor markør i samme meny, så er rammen rundt det VoiceOver har valgt lett å se for alle i rommet.</p>
+          </div>
           <p>Husk å slå av VoiceOver når du er ferdig.</p>
         </>
       ),
@@ -954,6 +957,9 @@ const content: Content = {
         <>
           <p>Du kan nå endre talehastigheten, la TalkBack lese alt, søke på skjermen, skrive raskere og høre når siden sier fra om språket.</p>
           <p>Tenk på en side du har laget selv. Sier den hvilket språk den er på? Får du beskjed når du har søkt?</p>
+          <div className="box">
+            <p><strong>Skal du vise dette for andre?</strong> Åpne TalkBack-innstillinger og slå på Vis tale som tekst under Visuelt. Da vises alt TalkBack sier, som tekst på skjermen. Det passer til demoer, skjermopptak og rom der lyden er skrudd av, og alle ser nøyaktig hva skjermleseren leser opp. Under Endre fokusindikatoren i samme del kan du slå på Tykke kantlinjer og velge farge, så er rammen rundt det TalkBack har valgt lett å se for alle i rommet.</p>
+          </div>
           <p>Husk å slå av TalkBack når du er ferdig.</p>
         </>
       ),

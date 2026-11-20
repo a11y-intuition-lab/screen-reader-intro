@@ -442,6 +442,9 @@ const content: Content = {
         <>
           <p>You can now change the speech rate, let VoiceOver read everything, search the screen, type faster, and hear when the page says which language it is in.</p>
           <p>Think of a page you have made yourself. Does it say which language it is in? Do you get a message when you have searched?</p>
+          <div className="box">
+            <p><strong>Showing this to others?</strong> Turn on Caption Panel: open Settings, then Accessibility, then VoiceOver, then Caption Panel. Everything VoiceOver says then appears as text at the bottom of the screen. It works well for demos, screen recordings and rooms with the sound off, and everyone sees exactly what the screen reader reads out. Turn on Large Cursor in the same menu too, so the frame around what VoiceOver has selected is easy to see for everyone in the room.</p>
+          </div>
           <p>Remember to turn off VoiceOver when you are done.</p>
         </>
       ),
@@ -954,6 +957,9 @@ const content: Content = {
         <>
           <p>You can now change the speech rate, let TalkBack read everything, search the screen, type faster, and hear when the page says which language it is in.</p>
           <p>Think of a page you have made yourself. Does it say which language it is in? Do you get a message when you have searched?</p>
+          <div className="box">
+            <p><strong>Showing this to others?</strong> Open TalkBack settings and turn on Display speech output under Visual. Everything TalkBack says then appears as text on the screen. It works well for demos, screen recordings and rooms with the sound off, and everyone sees exactly what the screen reader reads out. Under Change focus indicator in the same section, turn on Thick borders and pick a colour, so the frame around what TalkBack has selected is easy to see for everyone in the room.</p>
+          </div>
           <p>Remember to turn off TalkBack when you are done.</p>
         </>
       ),
