@@ -4,6 +4,7 @@ import { Restaurant } from '../components/restaurant';
 import dining from '../assets/dining.svg';
 import library from '../assets/library.svg';
 import wave from '../assets/wave.svg';
+import { FLAGS } from '../flags';
 import type { Content } from './types';
 
 const content: Content = {
@@ -89,7 +90,7 @@ const content: Content = {
         <>
           <p>You can now turn VoiceOver on and off, move back and forth, stop the speech, find things with your finger, activate them and use Screen Curtain.</p>
           <p>If Screen Curtain is still on, triple-tap with three fingers to turn it off.</p>
-          <p>Next up is part 2: headings, landmarks, links and buttons, forms and status messages.</p>
+          <p>Next up is part 2: headings, {FLAGS.landmarks && 'landmarks, '}links and buttons, forms and status messages.</p>
           <p>For more practice, Apple has its own. Open Settings, then Accessibility, then VoiceOver, and choose VoiceOver Practice.</p>
           <p>Remember to turn off VoiceOver when you are done: press the side button three times.</p>
         </>
@@ -98,7 +99,7 @@ const content: Content = {
     {
       id: "find-your-way",
       title: "Find your way around a page",
-      intro: "Five steps on finding what you need without reading everything. This is how most people use a screen reader.",
+      intro: "How to find what you need without reading everything. This is how most people use a screen reader.",
       steps: [
           {
             title: "Headings",
@@ -106,7 +107,7 @@ const content: Content = {
               <>
                 <p>Most screen reader users don't read a page from the top. They jump between headings to get an overview, just as you skim with your eyes. Two out of three start this way on a long page.</p>
                 <p>You jump between headings with the rotor. Rotate two fingers on the screen as if you were turning a dial. VoiceOver says the name of each setting. Keep turning until you hear “Headings”. Then swipe down to go to the next one, and up to go to the previous one.</p>
-                <p>If you never hear “Headings”, add it: open Settings, then Accessibility, then VoiceOver, then Rotor, and turn on Headings.</p>
+                <p>If you never hear “Headings”, add it: open Settings, then Accessibility, then VoiceOver, then Rotor, and turn on Headings. In the same place you can add more to the rotor, such as Landmarks.</p>
                 <p>VoiceOver also says the heading level, such as “heading level 3”. The levels tell you how the page is organised.</p>
                 <p>Try it: find out when Fjordby Library closes on Saturday. Use headings to jump there.</p>
                 <Practice title="Fjordby Library">
@@ -125,6 +126,7 @@ const content: Content = {
             ),
           },
           {
+            flag: "landmarks",
             title: "Landmarks",
             body: (
               <>
@@ -200,7 +202,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>You can now jump between headings, landmarks, links and form fields, and you have heard the difference between a status message and a silent change.</p>
+          <p>You can now jump between headings, {FLAGS.landmarks && 'landmarks, '}links and form fields, and you have heard the difference between a status message and a silent change.</p>
           <p>Think about a page you have made yourself. What would you hear if you jumped between its headings? Are there links called “Read more”? Are error messages read aloud?</p>
           <p>Remember to turn off VoiceOver when you are done.</p>
         </>
@@ -225,7 +227,7 @@ const content: Content = {
                 <p><IconButton label="Share" /><IconButton /></p>
                 </Practice>
                 <p>The image of the library was read with its description. The wavy line below is decoration, so VoiceOver skipped it. The two buttons look the same, but only the first one says “Share”. The second has no name, so you do not know what it does until you press it.</p>
-                <p>If an image has no description, VoiceOver can try to describe it. This is called VoiceOver Recognition, and you find it in Settings, then Accessibility, then VoiceOver, then VoiceOver Recognition. The description can be wrong, and it does not know why the image is there.</p>
+                {FLAGS.recognition && <p>If an image has no description, VoiceOver can try to describe it. This is called VoiceOver Recognition, and you find it in Settings, then Accessibility, then VoiceOver, then VoiceOver Recognition. The description can be wrong, and it does not know why the image is there.</p>}
                 <p>Swipe right until you hear “Next”, and double-tap.</p>
               </>
             ),
@@ -442,6 +444,12 @@ const content: Content = {
         <>
           <p>You can now change the speech rate, let VoiceOver read everything, search the screen, type faster, and hear when the page says which language it is in.</p>
           <p>Think of a page you have made yourself. Does it say which language it is in? Do you get a message when you have searched?</p>
+          {!FLAGS.bookATable && (
+            <>
+              <p>You have completed the introduction. You can now use VoiceOver to test what you make: jump between headings{FLAGS.landmarks && ' and landmarks'}, fill in forms, and hear whether status messages and error messages come through.</p>
+              <p>To practise more, go back to a part from the menu.</p>
+            </>
+          )}
           <div className="box">
             <p><strong>Showing this to others?</strong> Turn on Caption Panel: open Settings, then Accessibility, then VoiceOver, then Caption Panel. Everything VoiceOver says then appears as text at the bottom of the screen. It works well for demos, screen recordings and rooms with the sound off, and everyone sees exactly what the screen reader reads out. Turn on Large Cursor in the same menu too, so the frame around what VoiceOver has selected is easy to see for everyone in the room.</p>
           </div>
@@ -451,6 +459,7 @@ const content: Content = {
     },
     {
       id: "book-a-table",
+      flag: "bookATable",
       title: "Book a table",
       intro: "A task where you use everything you have learned: find your way on a restaurant website, and book a table.",
       steps: [
@@ -466,7 +475,7 @@ const content: Content = {
                 <li>Book a table for four people on Saturday at 19:00. One of you cannot eat nuts.</li>
                 </ol>
                 </div>
-                <p>Remember the rotor: Headings, Landmarks and Form Controls take you quickly where you want to go. You turn the screen curtain on and off with a three-finger triple-tap.</p>
+                <p>Remember the rotor: {FLAGS.landmarks ? 'Headings, Landmarks and Form Controls' : 'Headings and Form Controls'} take you quickly where you want to go. You turn the screen curtain on and off with a three-finger triple-tap.</p>
                 <p>There is no time limit. If you get stuck, you find the answers and tips on the screen after.</p>
                 <p>Swipe right until you hear “Next”, and double-tap.</p>
               </>
@@ -513,7 +522,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>You have completed the introduction. You can now use VoiceOver to test what you make: jump between headings and landmarks, fill in forms, and hear whether status messages and error messages come through.</p>
+          <p>You have completed the introduction. You can now use VoiceOver to test what you make: jump between headings{FLAGS.landmarks && ' and landmarks'}, fill in forms, and hear whether status messages and error messages come through.</p>
           <p>To practise more, go back to a part from the menu.</p>
           <p>Remember to turn off VoiceOver when you are done.</p>
         </>
@@ -604,7 +613,7 @@ const content: Content = {
         <>
           <p>You can now turn TalkBack on and off, move back and forth, stop the speech, find things with your finger, activate them and hide the screen.</p>
           <p>If the screen is still hidden, open the TalkBack menu with three fingers and choose to show it.</p>
-          <p>Next up is part 2: headings, landmarks, links and buttons, forms and status messages.</p>
+          <p>Next up is part 2: headings, {FLAGS.landmarks && 'landmarks, '}links and buttons, forms and status messages.</p>
           <p>For more practice, TalkBack has its own tutorial. Open the TalkBack menu with three fingers, choose TalkBack settings, then Tutorial and help.</p>
           <p>Remember to turn off TalkBack when you are done: hold both volume keys.</p>
         </>
@@ -613,7 +622,7 @@ const content: Content = {
     {
       id: "find-your-way",
       title: "Find your way around a page",
-      intro: "Five steps on finding what you need without reading everything. This is how most people use a screen reader.",
+      intro: "How to find what you need without reading everything. This is how most people use a screen reader.",
       steps: [
           {
             title: "Headings",
@@ -621,7 +630,7 @@ const content: Content = {
               <>
                 <p>Most screen reader users don't read a page from the top. They jump between headings to get an overview, just as you skim with your eyes. Two out of three start this way on a long page.</p>
                 <p>You jump between headings with the reading controls. Swipe up then down in one movement to change the reading control. On phones with multi-finger gestures you can also swipe up or down with three fingers. TalkBack says the name of each control. Keep going until you hear “Headings”. Then swipe down to go to the next one, and up to go to the previous one.</p>
-                <p>If you never hear “Headings”, add it: open the TalkBack menu with three fingers, choose TalkBack settings, then Edit menus, then Customize reading controls, and turn on Headings.</p>
+                <p>If you never hear “Headings”, add it: open the TalkBack menu with three fingers, choose TalkBack settings, then Edit menus, then Customize reading controls, and turn on Headings. In the same place you can add more reading controls, such as Lists.</p>
                 <p>TalkBack also says the heading level, such as “heading level 3”. The levels tell you how the page is organised.</p>
                 <p>Try it: find out when Fjordby Library closes on Saturday. Use headings to jump there.</p>
                 <Practice title="Fjordby Library">
@@ -640,6 +649,7 @@ const content: Content = {
             ),
           },
           {
+            flag: "landmarks",
             title: "Landmarks",
             body: (
               <>
@@ -715,7 +725,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>You can now jump between headings, landmarks, links and form fields, and you have heard the difference between a status message and a silent change.</p>
+          <p>You can now jump between headings, {FLAGS.landmarks && 'landmarks, '}links and form fields, and you have heard the difference between a status message and a silent change.</p>
           <p>Think about a page you have made yourself. What would you hear if you jumped between its headings? Are there links called “Read more”? Are error messages read aloud?</p>
           <p>Remember to turn off TalkBack when you are done.</p>
         </>
@@ -957,6 +967,12 @@ const content: Content = {
         <>
           <p>You can now change the speech rate, let TalkBack read everything, search the screen, type faster, and hear when the page says which language it is in.</p>
           <p>Think of a page you have made yourself. Does it say which language it is in? Do you get a message when you have searched?</p>
+          {!FLAGS.bookATable && (
+            <>
+              <p>You have completed the introduction. You can now use TalkBack to test what you make: jump between headings{FLAGS.landmarks && ' and landmarks'}, fill in forms, and hear whether status messages and error messages come through.</p>
+              <p>To practise more, go back to a part from the menu.</p>
+            </>
+          )}
           <div className="box">
             <p><strong>Showing this to others?</strong> Open TalkBack settings and turn on Display speech output under Visual. Everything TalkBack says then appears as text on the screen. It works well for demos, screen recordings and rooms with the sound off, and everyone sees exactly what the screen reader reads out. Under Change focus indicator in the same section, turn on Thick borders and pick a colour, so the frame around what TalkBack has selected is easy to see for everyone in the room.</p>
           </div>
@@ -966,6 +982,7 @@ const content: Content = {
     },
     {
       id: "book-a-table",
+      flag: "bookATable",
       title: "Book a table",
       intro: "A task where you use everything you have learned: find your way on a restaurant website, and book a table.",
       steps: [
@@ -1028,7 +1045,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>You have completed the introduction. You can now use TalkBack to test what you make: jump between headings and landmarks, fill in forms, and hear whether status messages and error messages come through.</p>
+          <p>You have completed the introduction. You can now use TalkBack to test what you make: jump between headings{FLAGS.landmarks && ' and landmarks'}, fill in forms, and hear whether status messages and error messages come through.</p>
           <p>To practise more, go back to a part from the menu.</p>
           <p>Remember to turn off TalkBack when you are done.</p>
         </>
