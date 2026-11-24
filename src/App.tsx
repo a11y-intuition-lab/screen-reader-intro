@@ -1,13 +1,25 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import en from './content/en';
 import nb from './content/nb';
-import type { Lang, Platform, PlatformContent } from './content/types';
+import type { Content, Lang, Platform, PlatformContent } from './content/types';
+import { FLAGS, type Flag } from './flags';
 import { ui } from './content/ui';
 import { LangContext, useLang } from './lang';
 import { href, useRoute, type Route } from './router';
 import { getTheme, setLang, setTheme, type Theme } from './settings';
 
-const CONTENT = { en, nb };
+const on = (x: { flag?: Flag }) => !x.flag || FLAGS[x.flag];
+
+/** Tar bort deler og trinn som er slått av i flags.ts. Nummer og «x av y» regnes ut fra det som er igjen. */
+function visible(c: Content): Content {
+  const filter = (p: PlatformContent): PlatformContent => ({
+    ...p,
+    parts: p.parts.filter(on).map((part) => ({ ...part, steps: part.steps.filter(on) })),
+  });
+  return { iphone: filter(c.iphone), android: filter(c.android) };
+}
+
+const CONTENT = { en: visible(en), nb: visible(nb) };
 
 const HOME = {
   en: {
@@ -25,7 +37,10 @@ const HOME = {
     before: 'Before you start',
     beforeBody: (
       <>
-        <p>Parts 1 to 4 have five short steps each and take about 15 minutes. At the end there is a task where you use everything. Headphones help.</p>
+        <p>
+          Parts 1 to 4 have a few short steps each and take about 15 minutes.
+          {FLAGS.bookATable && ' At the end there is a task where you use everything.'} Headphones help.
+        </p>
         <p>
           You can add the introduction to your home screen, so it opens like an app. On iPhone, tap Share in Safari and
           choose Add to Home Screen. On Android, open the Chrome menu and choose Add to Home screen.
@@ -53,7 +68,10 @@ const HOME = {
     before: 'Før du starter',
     beforeBody: (
       <>
-        <p>Del 1 til 4 har fem korte trinn hver og tar omtrent 15 minutter. Til slutt kommer en oppgave der du bruker alt. Bruk gjerne hodetelefoner.</p>
+        <p>
+          Del 1 til 4 har noen korte trinn hver og tar omtrent 15 minutter.
+          {FLAGS.bookATable && ' Til slutt kommer en oppgave der du bruker alt.'} Bruk gjerne hodetelefoner.
+        </p>
         <p>
           Du kan legge innføringen på hjemskjermen, så åpnes den som en app. På iPhone trykker du på Del i Safari og
           velger Legg til på Hjem-skjerm. På Android åpner du menyen i Chrome og velger Legg til på startsiden.
