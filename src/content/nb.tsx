@@ -4,6 +4,7 @@ import { Restaurant } from '../components/restaurant';
 import dining from '../assets/dining.svg';
 import library from '../assets/library.svg';
 import wave from '../assets/wave.svg';
+import { FLAGS } from '../flags';
 import type { Content } from './types';
 
 const content: Content = {
@@ -89,7 +90,7 @@ const content: Content = {
         <>
           <p>Du kan nå slå VoiceOver av og på, gå frem og tilbake, stoppe talen, finne ting med fingeren, aktivere dem og bruke skjermgardinen.</p>
           <p>Står skjermgardinen fortsatt på, trykker du tre ganger med tre fingre for å slå den av.</p>
-          <p>Neste del handler om overskrifter, landemerker, lenker og knapper, skjemaer og statusmeldinger.</p>
+          <p>Neste del handler om overskrifter, {FLAGS.landmarks && 'landemerker, '}lenker og knapper, skjemaer og statusmeldinger.</p>
           <p>Vil du øve mer, har Apple sin egen øvelse. Åpne Innstillinger, så Tilgjengelighet, så VoiceOver, og velg VoiceOver-øvelse.</p>
           <p>Husk å slå av VoiceOver når du er ferdig: trykk tre ganger på sideknappen.</p>
         </>
@@ -98,7 +99,7 @@ const content: Content = {
     {
       id: "find-your-way",
       title: "Finn fram på en side",
-      intro: "Fem trinn om å finne det du trenger uten å lese alt. Det er slik de fleste bruker skjermleser.",
+      intro: "Om å finne det du trenger uten å lese alt. Det er slik de fleste bruker skjermleser.",
       steps: [
           {
             title: "Overskrifter",
@@ -106,7 +107,7 @@ const content: Content = {
               <>
                 <p>De fleste skjermleserbrukere leser ikke en side fra toppen. De hopper mellom overskriftene for å få oversikt, slik du skumleser med øynene. To av tre begynner slik på en lang side.</p>
                 <p>Du hopper mellom overskrifter med rotoren. Roter to fingre på skjermen som om du dreier på et hjul. VoiceOver sier navnet på hver innstilling. Fortsett til du hører «Overskrifter». Sveip så ned for å gå til neste, og opp for å gå til forrige.</p>
-                <p>Hører du aldri «Overskrifter», legger du det til: åpne Innstillinger, så Tilgjengelighet, så VoiceOver, så Rotor, og slå på Overskrifter.</p>
+                <p>Hører du aldri «Overskrifter», legger du det til: åpne Innstillinger, så Tilgjengelighet, så VoiceOver, så Rotor, og slå på Overskrifter. Samme sted kan du legge mer i rotoren, for eksempel Landemerker.</p>
                 <p>VoiceOver sier også nivået på overskriften, for eksempel «overskrift nivå 3». Nivåene forteller hvordan siden er bygd opp.</p>
                 <p>Prøv: finn ut når Fjordby bibliotek stenger på lørdag. Bruk overskriftene til å hoppe dit.</p>
                 <Practice title="Fjordby bibliotek">
@@ -125,6 +126,7 @@ const content: Content = {
             ),
           },
           {
+            flag: "landmarks",
             title: "Landemerker",
             body: (
               <>
@@ -200,7 +202,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>Du kan nå hoppe mellom overskrifter, landemerker, lenker og skjemafelt, og du har hørt forskjellen på en statusmelding og en stille endring.</p>
+          <p>Du kan nå hoppe mellom overskrifter, {FLAGS.landmarks && 'landemerker, '}lenker og skjemafelt, og du har hørt forskjellen på en statusmelding og en stille endring.</p>
           <p>Tenk på en side du har laget selv. Hva ville du hørt hvis du hoppet mellom overskriftene? Finnes det lenker som heter «Les mer»? Leses feilmeldingene opp?</p>
           <p>Husk å slå av VoiceOver når du er ferdig.</p>
         </>
@@ -225,7 +227,7 @@ const content: Content = {
                 <p><IconButton label="Del" /><IconButton /></p>
                 </Practice>
                 <p>Bildet av biblioteket ble lest opp med beskrivelsen. Bølgestreken under er pynt, så VoiceOver hoppet over den. De to knappene ser like ut, men bare den første sier «Del». Den andre har ikke noe navn, så du vet ikke hva den gjør før du trykker på den.</p>
-                <p>Mangler et bilde beskrivelse, kan VoiceOver prøve å beskrive det selv. Det heter VoiceOver-gjenkjenning, og du finner det under Innstillinger, så Tilgjengelighet, så VoiceOver, så VoiceOver-gjenkjenning. Beskrivelsen kan være feil, og den vet ikke hvorfor bildet er der.</p>
+                {FLAGS.recognition && <p>Mangler et bilde beskrivelse, kan VoiceOver prøve å beskrive det selv. Det heter VoiceOver-gjenkjenning, og du finner det under Innstillinger, så Tilgjengelighet, så VoiceOver, så VoiceOver-gjenkjenning. Beskrivelsen kan være feil, og den vet ikke hvorfor bildet er der.</p>}
                 <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
               </>
             ),
@@ -442,6 +444,12 @@ const content: Content = {
         <>
           <p>Du kan nå endre talehastigheten, la VoiceOver lese alt, søke på skjermen, skrive raskere og høre når siden sier fra om språket.</p>
           <p>Tenk på en side du har laget selv. Sier den hvilket språk den er på? Får du beskjed når du har søkt?</p>
+          {!FLAGS.bookATable && (
+            <>
+              <p>Du har fullført innføringen. Du kan nå bruke VoiceOver til å teste det du lager: hoppe mellom overskrifter{FLAGS.landmarks && ' og landemerker'}, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
+              <p>Vil du øve mer, går du tilbake til en del fra menyen.</p>
+            </>
+          )}
           <div className="box">
             <p><strong>Skal du vise dette for andre?</strong> Slå på Tekstingspanel: åpne Innstillinger, så Tilgjengelighet, så VoiceOver, så Tekstingspanel. Da står alt VoiceOver sier som tekst nederst på skjermen. Det passer til demoer, skjermopptak og rom der lyden er skrudd av, og alle ser nøyaktig hva skjermleseren leser opp. Slå også på Stor markør i samme meny, så er rammen rundt det VoiceOver har valgt lett å se for alle i rommet.</p>
           </div>
@@ -451,6 +459,7 @@ const content: Content = {
     },
     {
       id: "book-a-table",
+      flag: "bookATable",
       title: "Bestill bord",
       intro: "En oppgave der du bruker alt du har lært: finn fram på nettsiden til en restaurant, og bestill bord.",
       steps: [
@@ -466,7 +475,7 @@ const content: Content = {
                 <li>Bestill bord til fire personer lørdag klokka 19. En av dere tåler ikke nøtter.</li>
                 </ol>
                 </div>
-                <p>Husk rotoren: Overskrifter, Landemerker og Skjemakontroller tar deg raskt dit du skal. Skjermgardinen slår du av og på ved å trykke tre ganger med tre fingre.</p>
+                <p>Husk rotoren: {FLAGS.landmarks ? 'Overskrifter, Landemerker og Skjemakontroller' : 'Overskrifter og Skjemakontroller'} tar deg raskt dit du skal. Skjermgardinen slår du av og på ved å trykke tre ganger med tre fingre.</p>
                 <p>Det er ingen tidsfrist. Står du fast, finner du svarene og tips på skjermen etter.</p>
                 <p>Sveip til høyre til du hører «Neste», og trykk to ganger.</p>
               </>
@@ -513,7 +522,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>Du har fullført innføringen. Du kan nå bruke VoiceOver til å teste det du lager: hoppe mellom overskrifter og landemerker, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
+          <p>Du har fullført innføringen. Du kan nå bruke VoiceOver til å teste det du lager: hoppe mellom overskrifter{FLAGS.landmarks && ' og landemerker'}, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
           <p>Vil du øve mer, går du tilbake til en del fra menyen.</p>
           <p>Husk å slå av VoiceOver når du er ferdig.</p>
         </>
@@ -604,7 +613,7 @@ const content: Content = {
         <>
           <p>Du kan nå slå TalkBack av og på, gå frem og tilbake, stoppe talen, finne ting med fingeren, aktivere dem og skjule skjermen.</p>
           <p>Er skjermen fortsatt skjult, åpner du TalkBack-menyen med tre fingre og velger å vise den.</p>
-          <p>Neste del handler om overskrifter, landemerker, lenker og knapper, skjemaer og statusmeldinger.</p>
+          <p>Neste del handler om overskrifter, {FLAGS.landmarks && 'landemerker, '}lenker og knapper, skjemaer og statusmeldinger.</p>
           <p>Vil du øve mer, har TalkBack sin egen opplæring. Åpne TalkBack-menyen med tre fingre, velg TalkBack-innstillinger, og så Opplæring og hjelp.</p>
           <p>Husk å slå av TalkBack når du er ferdig: hold inne begge volumknappene.</p>
         </>
@@ -613,7 +622,7 @@ const content: Content = {
     {
       id: "find-your-way",
       title: "Finn fram på en side",
-      intro: "Fem trinn om å finne det du trenger uten å lese alt. Det er slik de fleste bruker skjermleser.",
+      intro: "Om å finne det du trenger uten å lese alt. Det er slik de fleste bruker skjermleser.",
       steps: [
           {
             title: "Overskrifter",
@@ -621,7 +630,7 @@ const content: Content = {
               <>
                 <p>De fleste skjermleserbrukere leser ikke en side fra toppen. De hopper mellom overskriftene for å få oversikt, slik du skumleser med øynene. To av tre begynner slik på en lang side.</p>
                 <p>Du hopper mellom overskrifter med lesekontrollene. Sveip opp og så ned i én bevegelse for å bytte lesekontroll. På telefoner med bevegelser med flere fingre kan du også sveipe opp eller ned med tre fingre. TalkBack sier navnet på hver kontroll. Fortsett til du hører «Overskrifter». Sveip så ned for å gå til neste, og opp for å gå til forrige.</p>
-                <p>Hører du aldri «Overskrifter», legger du det til: åpne TalkBack-menyen med tre fingre, velg TalkBack-innstillinger, så Tilpass menyer, så Tilpass lesekontroller, og slå på Overskrifter.</p>
+                <p>Hører du aldri «Overskrifter», legger du det til: åpne TalkBack-menyen med tre fingre, velg TalkBack-innstillinger, så Tilpass menyer, så Tilpass lesekontroller, og slå på Overskrifter. Samme sted kan du legge til flere lesekontroller, for eksempel Lister.</p>
                 <p>TalkBack sier også nivået på overskriften, for eksempel «overskrift nivå 3». Nivåene forteller hvordan siden er bygd opp.</p>
                 <p>Prøv: finn ut når Fjordby bibliotek stenger på lørdag. Bruk overskriftene til å hoppe dit.</p>
                 <Practice title="Fjordby bibliotek">
@@ -640,6 +649,7 @@ const content: Content = {
             ),
           },
           {
+            flag: "landmarks",
             title: "Landemerker",
             body: (
               <>
@@ -715,7 +725,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>Du kan nå hoppe mellom overskrifter, landemerker, lenker og skjemafelt, og du har hørt forskjellen på en statusmelding og en stille endring.</p>
+          <p>Du kan nå hoppe mellom overskrifter, {FLAGS.landmarks && 'landemerker, '}lenker og skjemafelt, og du har hørt forskjellen på en statusmelding og en stille endring.</p>
           <p>Tenk på en side du har laget selv. Hva ville du hørt hvis du hoppet mellom overskriftene? Finnes det lenker som heter «Les mer»? Leses feilmeldingene opp?</p>
           <p>Husk å slå av TalkBack når du er ferdig.</p>
         </>
@@ -957,6 +967,12 @@ const content: Content = {
         <>
           <p>Du kan nå endre talehastigheten, la TalkBack lese alt, søke på skjermen, skrive raskere og høre når siden sier fra om språket.</p>
           <p>Tenk på en side du har laget selv. Sier den hvilket språk den er på? Får du beskjed når du har søkt?</p>
+          {!FLAGS.bookATable && (
+            <>
+              <p>Du har fullført innføringen. Du kan nå bruke TalkBack til å teste det du lager: hoppe mellom overskrifter{FLAGS.landmarks && ' og landemerker'}, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
+              <p>Vil du øve mer, går du tilbake til en del fra menyen.</p>
+            </>
+          )}
           <div className="box">
             <p><strong>Skal du vise dette for andre?</strong> Åpne TalkBack-innstillinger og slå på Vis tale som tekst under Visuelt. Da vises alt TalkBack sier, som tekst på skjermen. Det passer til demoer, skjermopptak og rom der lyden er skrudd av, og alle ser nøyaktig hva skjermleseren leser opp. Under Endre fokusindikatoren i samme del kan du slå på Tykke kantlinjer og velge farge, så er rammen rundt det TalkBack har valgt lett å se for alle i rommet.</p>
           </div>
@@ -966,6 +982,7 @@ const content: Content = {
     },
     {
       id: "book-a-table",
+      flag: "bookATable",
       title: "Bestill bord",
       intro: "En oppgave der du bruker alt du har lært: finn fram på nettsiden til en restaurant, og bestill bord.",
       steps: [
@@ -1028,7 +1045,7 @@ const content: Content = {
         ],
       done: (
         <>
-          <p>Du har fullført innføringen. Du kan nå bruke TalkBack til å teste det du lager: hoppe mellom overskrifter og landemerker, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
+          <p>Du har fullført innføringen. Du kan nå bruke TalkBack til å teste det du lager: hoppe mellom overskrifter{FLAGS.landmarks && ' og landemerker'}, fylle ut skjema, og høre om statusmeldinger og feilmeldinger kommer fram.</p>
           <p>Vil du øve mer, går du tilbake til en del fra menyen.</p>
           <p>Husk å slå av TalkBack når du er ferdig.</p>
         </>
